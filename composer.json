@@ -1,11 +1,11 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "crisen/promise",
+    "description": "laravel5.4+ace模版写成的rabc后台管理系统",
+    "keywords": ["cms后台", "后台管理系统"],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },
