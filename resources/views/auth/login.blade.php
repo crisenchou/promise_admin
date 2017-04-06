@@ -1,68 +1,86 @@
 @extends('layouts.auth')
+@section('box')
+    <div class="position-relative">
+        <div id="login-box" class="login-box visible widget-box no-border">
+            <div class="widget-body">
+                <div class="widget-main">
+                    <h4 class="header blue lighter bigger">
+                        <i class="ace-icon fa fa-coffee green"></i>
+                        请输入您的用户信息
+                    </h4>
+                    <div class="space-6"></div>
+                    @include('partial.validate')
+                    <form method="post">
+                        {{csrf_field()}}
+                        <fieldset>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="text" name="email" class="form-control" placeholder="邮箱"/>
+                                    <i class="ace-icon fa fa-user"></i>
+                                </span>
+                            </label>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="password" name="password" class="form-control" placeholder="密码"/>
+                                    <i class="ace-icon fa fa-lock"></i>
+                                </span>
+                            </label>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+                            <div class="space"></div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="clearfix">
+                                <label class="inline">
+                                    <input type="checkbox" class="ace" name="remember me"/>
+                                    <span class="lbl"> 记住我</span>
+                                </label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
+                                <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                                    <i class="ace-icon fa fa-key"></i>
+                                    <span class="bigger-110">登录</span>
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
                             </div>
-                        </div>
+
+                            <div class="space-4"></div>
+                        </fieldset>
                     </form>
+
+                    <!--<div class="social-or-login center">
+                        <span class="bigger-110">使用其他账户登陆</span>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="social-login center">
+                        <a class="btn btn-primary">
+                            <i class="ace-icon fa fa-facebook"></i>
+                        </a>
+
+                        <a class="btn btn-info">
+                            <i class="ace-icon fa fa-twitter"></i>
+                        </a>
+
+                        <a class="btn btn-danger">
+                            <i class="ace-icon fa fa-google-plus"></i>
+                        </a>
+                    </div>-->
+                </div><!-- /.widget-main -->
+
+                <div class="toolbar clearfix">
+                    <div>
+                        <a href="{{url('password-reset')}}" class="forgot-password-link">
+                            <i class="ace-icon fa fa-arrow-left"></i>
+                            忘记密码
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="{{url('register')}}" class="user-signup-link">
+                            注册
+                            <i class="ace-icon fa fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div><!-- /.widget-body -->
+        </div><!-- /.login-box -->
     </div>
-</div>
 @endsection

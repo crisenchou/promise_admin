@@ -3,14 +3,12 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
-    <title>Login Page - Ace Admin</title>
-
+    <title>@yield('title','login')</title>
     <meta name="description" content="User login page"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}"/>
-
     <!-- page specific plugin styles -->
 @stack('css')
 
@@ -49,10 +47,10 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">Ace</span>
+                            <span class="red">诺言后台</span>
                             <span class="white" id="id-text2">系统</span>
                         </h1>
-                        <h4 class="blue" id="id-company-text">&copy; xxxxxx</h4>
+                        <h4 class="blue" id="id-company-text">&copy; crisenchou</h4>
                     </div>
 
                     <div class="space-6"></div>
