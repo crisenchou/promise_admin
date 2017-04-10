@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\LoginShipped;
 use Illuminate\Http\Request;
+use Mail;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        Mail::to($user->email)
+            ->queue(new LoginShipped($user));
+        return response('ok');
+        //return view('home');
     }
 }
