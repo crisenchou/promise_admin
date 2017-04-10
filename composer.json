@@ -9,9 +9,10 @@
   "type": "project",
   "require": {
     "php": ">=7",
+    "barryvdh/laravel-ide-helper": "^2.2",
+    "laravel/dusk": "^1.0",
     "laravel/framework": "5.4.*",
     "laravel/tinker": "~1.0",
-    "barryvdh/laravel-ide-helper": "^2.2",
     "maatwebsite/excel": "~2.1.0",
     "mews/captcha": "~2.0"
   },
