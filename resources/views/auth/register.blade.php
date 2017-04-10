@@ -15,13 +15,22 @@
                         <fieldset>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="email" name="email" class="form-control" placeholder="邮箱"/>
+                                    <input type="text" name="name" class="form-control" placeholder="用户名"
+                                           value="{{old('name')}}"/>
                                     <i class="ace-icon fa fa-envelope"></i>
                                 </span>
                             </label>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="password" name="password" class="form-control" placeholder="密码"/>
+                                    <input type="email" name="email" class="form-control" placeholder="邮箱"
+                                           value="{{old('email')}}"/>
+                                    <i class="ace-icon fa fa-envelope"></i>
+                                </span>
+                            </label>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="password" name="password" class="form-control" placeholder="密码"
+                                           value="{{old('password')}}"/>
                                     <i class="ace-icon fa fa-lock"></i>
                                 </span>
                             </label>
@@ -29,7 +38,7 @@
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
                                     <input type="password" name="password_confirmation" class="form-control"
-                                           placeholder="重复密码"/>
+                                           placeholder="重复密码" value="{{old('password_confirmation')}}"/>
                                     <i class="ace-icon fa fa-retweet"></i>
                                 </span>
                             </label>

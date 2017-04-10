@@ -6,7 +6,7 @@
                 <div class="widget-main">
                     <h4 class="header blue lighter bigger">
                         <i class="ace-icon fa fa-coffee green"></i>
-                        请输入您的用户信息
+                        登录
                     </h4>
                     <div class="space-6"></div>
                     @include('partial.validate')
@@ -15,17 +15,29 @@
                         <fieldset>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="email" class="form-control" placeholder="邮箱"/>
+                                    <input type="text" name="email" class="form-control" placeholder="邮箱"
+                                           value="{{old('email')}}"/>
                                     <i class="ace-icon fa fa-user"></i>
                                 </span>
                             </label>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="password" name="password" class="form-control" placeholder="密码"/>
+                                    <input type="password" name="password" class="form-control" placeholder="密码"
+                                           value="{{old('password')}}"/>
                                     <i class="ace-icon fa fa-lock"></i>
                                 </span>
                             </label>
 
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="text" name="captcha" class="form-control" placeholder="验证码"/>
+                                    <i class="ace-icon fa fa-bolt"></i>
+                                </span>
+                            </label>
+
+                            <label class="block clearfix">
+                                <img id="captcha" src="{{captcha_src()}}">
+                            </label>
                             <div class="space"></div>
 
                             <div class="clearfix">
@@ -67,7 +79,7 @@
 
                 <div class="toolbar clearfix">
                     <div>
-                        <a href="{{url('password-reset')}}" class="forgot-password-link">
+                        <a href="{{url('forgot-password')}}" class="forgot-password-link">
                             <i class="ace-icon fa fa-arrow-left"></i>
                             忘记密码
                         </a>

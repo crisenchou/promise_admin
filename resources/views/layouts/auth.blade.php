@@ -47,7 +47,7 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">诺言后台</span>
+                            <span class="red">{{$app_name}}</span>
                             <span class="white" id="id-text2">系统</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; crisenchou</h4>
@@ -90,23 +90,12 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-    jQuery(function ($) {
-        $(document).on('click', '.toolbar a[data-target]', function (e) {
-            e.preventDefault();
-            var target = $(this).data('target');
-            $('.widget-box.visible').removeClass('visible');//hide others
-            $(target).addClass('visible');//show target
-        });
-    });
-
-
     //you don't need this, just used for changing background
     jQuery(function ($) {
         $('#btn-login-dark').on('click', function (e) {
             $('body').attr('class', 'login-layout');
             $('#id-text2').attr('class', 'white');
             $('#id-company-text').attr('class', 'blue');
-
             e.preventDefault();
         });
         $('#btn-login-light').on('click', function (e) {
@@ -123,6 +112,11 @@
 
             e.preventDefault();
         });
+
+        $("#captcha").on('click', function () {
+            $(this).attr('src', '{{url('captcha/default')}}?' + Math.random());
+        });
+
 
     });
 </script>

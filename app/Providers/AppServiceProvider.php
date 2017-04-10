@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('app_name', config('app.name'));
     }
 
     /**
@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }
