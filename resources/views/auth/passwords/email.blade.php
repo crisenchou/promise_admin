@@ -1,4 +1,5 @@
 @extends('layouts.auth')
+@section('title','forgot')
 @section('box')
     <div class="position-relative">
         <div id="forgot-box" class="forgot-box visible widget-box no-border">
@@ -9,21 +10,24 @@
                         重置密码
                     </h4>
                     <div class="space-6"></div>
+
+                    @include('partial.validate')
                     <p>
                         填写邮箱并接受消息
                     </p>
-                    <form>
+                    <form method="post" action="{{url('password/email')}}">
+                        {{csrf_field()}}
                         <fieldset>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="email" class="form-control" placeholder="Email"
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
                                            value="{{old('email')}}"/>
                                     <i class="ace-icon fa fa-envelope"></i>
                                 </span>
                             </label>
 
                             <div class="clearfix">
-                                <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                <button type="submit" class="width-35 pull-right btn btn-sm btn-danger">
                                     <i class="ace-icon fa fa-lightbulb-o"></i>
                                     <span class="bigger-110">发送</span>
                                 </button>

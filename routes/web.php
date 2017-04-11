@@ -12,12 +12,7 @@
 */
 
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+Auth::routes();
 
 
 Route::get('/', 'HomeController@index');

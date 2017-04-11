@@ -1,76 +1,62 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+@section('title','reset')
+@section('box')
+    <div class="position-relative">
+        <div id="signup-box" class="signup-box visible widget-box no-border">
+            <div class="widget-body">
+                <div class="widget-main">
+                    <h4 class="header green lighter bigger">
+                        <i class="ace-icon fa fa-users blue"></i>
+                        重置密码
+                    </h4>
+                    <div class="space-6"></div>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                    @include('partial.validate')
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
-
+                    <form method="post" action="{{url('password/reset')}}">
+                        {{csrf_field()}}
                         <input type="hidden" name="token" value="{{ $token }}">
+                        <fieldset>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="email" name="email" class="form-control" placeholder="邮箱"
+                                           value="{{old('email')}}"/>
+                                    <i class="ace-icon fa fa-envelope"></i>
+                                </span>
+                            </label>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="password" name="password" class="form-control" placeholder="密码"
+                                           value="{{old('password')}}"/>
+                                    <i class="ace-icon fa fa-lock"></i>
+                                </span>
+                            </label>
+                            <label class="block clearfix">
+                                <span class="block input-icon input-icon-right">
+                                    <input type="password" name="password_confirmation" class="form-control"
+                                           placeholder="重复密码" value="{{old('password_confirmation')}}"/>
+                                    <i class="ace-icon fa fa-retweet"></i>
+                                </span>
+                            </label>
+                            <div class="space-24"></div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
+                            <div class="clearfix">
+                                <button type="submit" class="width-35 pull-right btn btn-sm btn-success">
+                                    <i class="ace-icon fa fa-lightbulb-o"></i>
+                                    <span class="bigger-110">提交</span>
                                 </button>
                             </div>
-                        </div>
+                        </fieldset>
                     </form>
                 </div>
-            </div>
-        </div>
+
+                <div class="toolbar center">
+                    <a href="{{url('login')}}" class="back-to-login-link">
+                        <i class="ace-icon fa fa-arrow-left"></i>
+                        返回登录
+                    </a>
+                </div>
+            </div><!-- /.widget-body -->
+        </div><!-- /.signup-box -->
     </div>
-</div>
 @endsection

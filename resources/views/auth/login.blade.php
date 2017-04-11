@@ -27,7 +27,6 @@
                                     <i class="ace-icon fa fa-lock"></i>
                                 </span>
                             </label>
-
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
                                     <input type="text" name="captcha" class="form-control" placeholder="验证码"/>
@@ -79,7 +78,7 @@
 
                 <div class="toolbar clearfix">
                     <div>
-                        <a href="{{url('forgot-password')}}" class="forgot-password-link">
+                        <a href="{{url('password/reset')}}" class="forgot-password-link">
                             <i class="ace-icon fa fa-arrow-left"></i>
                             忘记密码
                         </a>

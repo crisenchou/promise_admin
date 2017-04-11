@@ -1,4 +1,5 @@
 @extends('layouts.auth')
+@section('title','register')
 @section('box')
     <div class="position-relative">
         <div id="signup-box" class="signup-box visible widget-box no-border">
