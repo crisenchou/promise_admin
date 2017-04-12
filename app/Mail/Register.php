@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\User;
 
-class LoginShipped extends Mailable
+class Register extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,7 +22,7 @@ class LoginShipped extends Mailable
     public function __construct(User $user)
     {
         $this->user = $user;
-        $this->subject = '欢迎登录';
+        $this->subject = '欢迎加入';
     }
 
     /**
@@ -32,6 +32,6 @@ class LoginShipped extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.login');
+        return $this->view('emails.register', ['user' => $this->user]);
     }
 }

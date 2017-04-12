@@ -26,10 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        Mail::to($user->email)
-            ->queue(new LoginShipped($user));
         return response('ok');
-        //return view('home');
     }
 }

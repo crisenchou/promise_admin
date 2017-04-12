@@ -2,11 +2,13 @@
 
 namespace App\Listeners;
 
-use Illuminate\Mail\Events\MessageSending;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
+use App\Mail\Register as RegisterMail;
 
-class LogSentMessage
+class LogRegisteredUser
 {
     /**
      * Create the event listener.
@@ -21,11 +23,12 @@ class LogSentMessage
     /**
      * Handle the event.
      *
-     * @param  MessageSending $event
+     * @param  Registered $event
      * @return void
      */
-    public function handle(MessageSending $event)
+    public function handle(Registered $event)
     {
-        info('send successful');
+        $user = $event->user;
+        Mail::to($user->email)->queue(new RegisterMail($user));
     }
 }
