@@ -15,7 +15,7 @@
                     <p>
                         填写邮箱并接受消息
                     </p>
-                    <form method="post" action="{{url('password/email')}}">
+                    <form method="post" action="{{route('password.email')}}">
                         {{csrf_field()}}
                         <fieldset>
                             <label class="block clearfix">
@@ -37,7 +37,7 @@
                 </div><!-- /.widget-main -->
 
                 <div class="toolbar center">
-                    <a href="{{url('login')}}" class="back-to-login-link">
+                    <a href="{{route('login')}}" class="back-to-login-link">
                         返回登陆
                         <i class="ace-icon fa fa-arrow-right"></i>
                     </a>

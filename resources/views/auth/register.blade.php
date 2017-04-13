@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="toolbar center">
-                    <a href="{{url('login')}}" class="back-to-login-link">
+                    <a href="{{route('login')}}" class="back-to-login-link">
                         <i class="ace-icon fa fa-arrow-left"></i>
                         返回登录
                     </a>

@@ -1,4 +1,5 @@
 @extends('layouts.auth')
+@section('title','login')
 @section('box')
     <div class="position-relative">
         <div id="login-box" class="login-box visible widget-box no-border">
@@ -78,14 +79,14 @@
 
                 <div class="toolbar clearfix">
                     <div>
-                        <a href="{{url('password/reset')}}" class="forgot-password-link">
+                        <a href="{{route('password.request')}}" class="forgot-password-link">
                             <i class="ace-icon fa fa-arrow-left"></i>
                             忘记密码
                         </a>
                     </div>
 
                     <div>
-                        <a href="{{url('register')}}" class="user-signup-link">
+                        <a href="{{route('register')}}" class="user-signup-link">
                             注册
                             <i class="ace-icon fa fa-arrow-right"></i>
                         </a>

@@ -8,7 +8,7 @@
             <li class="active">Dashboard</li>
         </ul><!-- /.breadcrumb -->
     @endif
-    <!--<div class="nav-search" id="nav-search">
+<!--<div class="nav-search" id="nav-search">
         <form class="form-search">
             <span class="input-icon">
                 <input type="text" placeholder="Search ..." class="nav-search-input"
