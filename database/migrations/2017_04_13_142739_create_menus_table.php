@@ -20,8 +20,8 @@ class CreateMenusTable extends Migration
             $table->string('name', 20);
             $table->string('url', 60);
             $table->string('icon', 20);
-            $table->integer('target', 20);
-            $table->integer('status', 60);
+            $table->integer('target');
+            $table->integer('status');
             $table->timestamps();
         });
     }
