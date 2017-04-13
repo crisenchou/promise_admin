@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}"/>
     <!-- page specific plugin styles -->
-@stack('css')
+    @stack('css')
 
-<!-- text fonts -->
+    <!-- text fonts -->
     <link rel="stylesheet" href="{{asset('assets/css/fonts.googleapis.com.css')}}"/>
 
     <!-- ace styles -->
@@ -54,9 +54,7 @@
                     </div>
 
                     <div class="space-6"></div>
-
                     @yield('box')
-
                     <div class="navbar-fixed-top align-right">
                         <br/>
                         &nbsp;
@@ -102,22 +100,18 @@
             $('body').attr('class', 'login-layout light-login');
             $('#id-text2').attr('class', 'grey');
             $('#id-company-text').attr('class', 'blue');
-
             e.preventDefault();
         });
         $('#btn-login-blur').on('click', function (e) {
             $('body').attr('class', 'login-layout blur-login');
             $('#id-text2').attr('class', 'white');
             $('#id-company-text').attr('class', 'light-blue');
-
             e.preventDefault();
         });
 
         $("#captcha").on('click', function () {
             $(this).attr('src', '{{url('captcha/default')}}?' + Math.random());
         });
-
-
     });
 </script>
 </body>
