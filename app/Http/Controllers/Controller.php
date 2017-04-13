@@ -32,9 +32,10 @@ class Controller extends BaseController
         return response($response);
     }
 
-    protected function message($type, $message)
+    protected function message($message, $type = "")
     {
-        return $this->view('message.' . $type, $message);
+        return $this->view('widget.message', ['message' => $message]);
+        //return $this->view('message.' . $type, $message);
     }
 
     protected function success($message)

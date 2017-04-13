@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('widget.menus', 'App\Http\ViewComposers\CategoriesComposer');
+        View::composer('widget.navbar', 'App\Http\ViewComposers\NavbarComposer');
     }
 
     /**

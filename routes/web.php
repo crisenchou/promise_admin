@@ -15,4 +15,6 @@ Route::get('logout', 'Auth\LoginController@logout');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
+Route::get('settings', 'HomeController@settings')->name('settings');
+Route::get('profile', 'HomeController@profile')->name('profile');
 Route::get('home', 'HomeController@index')->name('home');

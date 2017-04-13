@@ -35,4 +35,15 @@ class HomeController extends Controller
         return Auth::user();
     }
 
+    public function profile()
+    {
+        return $this->message("coming soon");
+    }
+
+
+    public function settings()
+    {
+        return $this->message("coming soon");
+    }
+
 }
