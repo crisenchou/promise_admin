@@ -34,7 +34,7 @@
 </head>
 <body class="no-skin">
 @section('navbar')
-    @include('partial.navbar')
+    @include('widget.navbar')
 @show
 <div class="main-container ace-save-state" id="main-container">
     <script type="text/javascript">

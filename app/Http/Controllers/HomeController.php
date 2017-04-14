@@ -37,13 +37,13 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return $this->message("coming soon");
+        abort(404);
     }
 
 
     public function settings()
     {
-        return $this->message("coming soon");
+        abort(500);
     }
 
 }

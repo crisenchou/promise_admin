@@ -6,18 +6,19 @@
                 <i class="ace-icon fa fa-home home-icon"></i>
                 <a href="#">Home</a>
             </li>
+
             <li>
                 <a href="#">Other Pages</a>
             </li>
             <li class="active">Error 404</li>
         </ul><!-- /.breadcrumb -->
+
         <div class="nav-search" id="nav-search">
             <form class="form-search">
-                <span class="input-icon">
-                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input"
-                           autocomplete="off"/>
-                    <i class="ace-icon fa fa-search nav-search-icon"></i>
-                </span>
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
             </form>
         </div><!-- /.nav-search -->
     </div>
@@ -26,17 +27,18 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- PAGE CONTENT BEGINS -->
+
             <div class="error-container">
                 <div class="well">
                     <h1 class="grey lighter smaller">
-                        <span class="blue bigger-125">
-                            <i class="ace-icon fa fa-sitemap"></i>
+											<span class="blue bigger-125">
+												<i class="ace-icon fa fa-sitemap"></i>
 												404
-                        </span>
+											</span>
                         Page Not Found
                     </h1>
 
-                    <hr/>
+                    <hr />
                     <h3 class="lighter smaller">We looked everywhere but we couldn't find it!</h3>
 
                     <div>
@@ -44,8 +46,7 @@
 												<span class="input-icon align-middle">
 													<i class="ace-icon fa fa-search"></i>
 
-													<input type="text" class="search-query"
-                                                           placeholder="Give it a search..."/>
+													<input type="text" class="search-query" placeholder="Give it a search..." />
 												</span>
                             <button class="btn btn-sm" type="button">Go!</button>
                         </form>
@@ -70,7 +71,8 @@
                             </li>
                         </ul>
                     </div>
-                    <hr/>
+
+                    <hr />
                     <div class="space"></div>
 
                     <div class="center">
@@ -86,6 +88,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- PAGE CONTENT ENDS -->
         </div><!-- /.col -->
     </div><!-- /.row -->
