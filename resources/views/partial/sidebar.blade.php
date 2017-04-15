@@ -33,6 +33,7 @@
         </div>
     </div><!-- /.sidebar-shortcuts -->
 
+
     @include('partial.menus')
 
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

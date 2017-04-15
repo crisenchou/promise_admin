@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}"/>
     <!-- page specific plugin styles -->
-    @stack('css')
-    <!-- text fonts -->
+@stack('css')
+<!-- text fonts -->
     <link rel="stylesheet" href="{{asset('assets/css/fonts.googleapis.com.css')}}"/>
     <!-- ace styles -->
     <link rel="stylesheet" href="{{asset('assets/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style"/>
@@ -52,6 +52,7 @@
                 @include('partial.breadcrumbs')
             @show
             <div class="page-content">
+                @include('partial.message')
                 @include('partial.settings')
                 @yield('page-content')
             </div><!-- /.page-content -->
