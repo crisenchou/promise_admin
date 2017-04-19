@@ -9,6 +9,7 @@ use Auth;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -17,6 +18,16 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+
+    /**
+     * static bind get model
+     * @return null
+     */
+    protected static function getModel()
+    {
+        return null;
     }
 
     /**

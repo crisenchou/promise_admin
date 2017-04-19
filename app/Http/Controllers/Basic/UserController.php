@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers\Basic;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+
+    private $user;
+
+    public function __construct(UserRepository $user) {
+
+        $this->user = $user;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +25,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = $this->model;
+        dd($users);
+        dd($users->all());
         return $this->view('user.index');
     }
 

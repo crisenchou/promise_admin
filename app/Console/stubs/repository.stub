@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Bosnadev\Repositories\Eloquent\Repository;
+
+class DummyClass extends Repository
+{
+    public function model()
+    {
+        //TO DO
+    }
+}

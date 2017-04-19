@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
 
-
     /**
      * The roles that belong to the user.
      */
