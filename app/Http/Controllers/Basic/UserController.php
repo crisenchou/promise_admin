@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-
     private $user;
 
-    public function __construct(UserRepository $user) {
-
+    public function __construct(UserRepository $user)
+    {
         $this->user = $user;
     }
 
@@ -25,10 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->model;
-        dd($users);
-        dd($users->all());
-        return $this->view('user.index');
+        $users = $this->user->all();
+        return $this->view('user.index', ['users' => $users]);
     }
 
     /**
@@ -38,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return $this->view('user.create');
     }
 
     /**
@@ -71,7 +68,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user->find($id);
+        return $this->view('user.create', ['user' => $user]);
     }
 
     /**
@@ -94,6 +92,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //$this->user->delete($id);
+        return $this->redirect('user')->with(['messate' => '删除成功']);
     }
 }

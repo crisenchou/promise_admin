@@ -9,7 +9,7 @@ class UserRepository extends Repository
 {
     public function model()
     {
-        return 'App\User';
-        //return User::class;
+        //return 'App\User';
+        return User::class;
     }
 }
