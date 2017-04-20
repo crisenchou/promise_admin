@@ -14,7 +14,7 @@ class UserController extends Controller
         return UserRepository::class;
     }
 
-    public function module()
+    protected function module()
     {
         return 'user';
     }

@@ -17,5 +17,6 @@ class MenuController extends Controller
     public function index()
     {
         $menus = $this->model->all();
+        return $this->view('menus.index', ['menus' => $menus]);
     }
 }

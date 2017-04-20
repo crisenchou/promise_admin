@@ -50,13 +50,11 @@ class Controller extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return $this->view('create');
+        return $this->view($this->module . '.create');
     }
 
     /**
@@ -82,14 +80,13 @@ class Controller extends BaseController
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $user = $this->model->find($id);
+        return $this->view($this->module() . '.edit', ['user' => $user]);
     }
 
     /**
