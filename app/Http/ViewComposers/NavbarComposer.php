@@ -13,7 +13,7 @@ use Auth;
 class NavbarComposer
 {
 
-    protected $users;
+    protected $user;
 
 
     public function __construct()

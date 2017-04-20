@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\User;
+use App\Menu;
 use Bosnadev\Repositories\Eloquent\Repository;
 
-class UserRepository extends Repository
+class MenuRepository extends Repository
 {
     public function model()
     {
-        return User::class;
+        return Menu::class;
     }
 }

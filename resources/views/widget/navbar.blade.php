@@ -10,7 +10,7 @@
             <a href="{{url('/')}}" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    {{$app_name}}
+                    {{config('app.name')}}
                 </small>
             </a>
         </div>
@@ -23,7 +23,7 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="{{url('assets/images/avatars/user.jpg')}}"
                              alt="Jason's Photo"/>
-                        <span class="user-info">	<small>欢迎,</small> {{$user->name}}</span>
+                        <span class="user-info">	<small>欢迎,</small> {{$user->name or ''}}</span>
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
