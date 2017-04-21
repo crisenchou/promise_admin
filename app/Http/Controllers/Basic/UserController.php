@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UserController extends AbstractBasicController
 {
 
     protected $module = 'user';
+    protected $route = 'user';
     protected $fillable = [
         'email' => '邮箱',
         'name' => '名字',

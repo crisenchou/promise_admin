@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = $this->user();
-        return $this->view('home', ['user' => $user]);
+        return view('home', ['user' => $user]);
     }
 
     public function user()
