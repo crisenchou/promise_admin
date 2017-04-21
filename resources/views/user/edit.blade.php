@@ -14,8 +14,4 @@
     {{ Form::text('email', old('email'))}}
 
     {!! Form::close() !!}
-
 @endsection
-
-
-

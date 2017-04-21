@@ -9,13 +9,16 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    protected $module = 'user';
+    protected $fillable = [
+        'email' => '邮箱',
+        'name' => '名字',
+        'status' => '状态',
+        'created_at' => '加入时间'
+    ];
+
     public static function model()
     {
         return UserRepository::class;
-    }
-
-    protected function module()
-    {
-        return 'user';
     }
 }

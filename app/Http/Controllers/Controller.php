@@ -15,14 +15,20 @@ class Controller extends BaseController
 
     protected $render = [];
     protected $model;
-    protected $module;
+    protected $fillable = [];
+    protected $opration = [];
+    protected $hidden = [];
+    protected $route = 'home';
+    protected $module = '/';
+    protected $view = 'common';
+    protected $redirect = '/';
+
 
     public function __construct()
     {
         if (static::model()) {
             $this->model = app()->make(static::model());
         }
-        $this->module = $this->module();
     }
 
     /**
@@ -34,19 +40,13 @@ class Controller extends BaseController
         return null;
     }
 
-
-    protected function module()
-    {
-        //TO DO ...
-    }
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $data = $this->model->all();
-        return $this->view($this->module . '.index', ['users' => $data]);
+        $list = $this->model->all();
+        return $this->view('index', ['list' => $list]);
     }
 
     /**
@@ -54,7 +54,7 @@ class Controller extends BaseController
      */
     public function create()
     {
-        return $this->view($this->module . '.create');
+        return $this->view('create');
     }
 
     /**
@@ -65,7 +65,8 @@ class Controller extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $this->model->create($request->except('_token'));
+        return $this->success();
     }
 
     /**
@@ -85,8 +86,8 @@ class Controller extends BaseController
      */
     public function edit($id)
     {
-        $user = $this->model->find($id);
-        return $this->view($this->module() . '.edit', ['user' => $user]);
+        $model = $this->model->find($id);
+        return $this->view('edit', ['model' => $model]);
     }
 
     /**
@@ -121,6 +122,8 @@ class Controller extends BaseController
      */
     protected function view($view, $render = [])
     {
+        $this->render();
+        $view = $this->view . '.' . $view;
         return view($view, array_merge($this->render, $render));
     }
 
@@ -131,6 +134,9 @@ class Controller extends BaseController
      */
     protected function redirect($url)
     {
+        if (!$url) {
+            $url = url($this->redirect);
+        }
         return redirect($url);
     }
 
@@ -143,6 +149,27 @@ class Controller extends BaseController
     protected function response($response)
     {
         return response($response);
+    }
+
+
+    protected function render()
+    {
+        $this->render['fillable'] = $this->fillable;
+        $this->render['opration'] = $this->opration;
+        $this->render['module'] = $this->module;
+        $this->render['route'] = $this->route;
+        return $this->render;
+    }
+
+
+    protected function success($url = '')
+    {
+        return $this->redirect($url)->with(['message' => '保存成功']);
+    }
+
+    protected function error($url = '')
+    {
+        return $this->redirect($url)->with(['message' => '保存失败']);
     }
 
 }

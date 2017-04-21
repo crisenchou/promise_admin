@@ -33,7 +33,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($list as $user)
                             <tr>
                                 <td class="center">
                                     <label class="pos-rel">
