@@ -9,9 +9,8 @@ use App\Http\Controllers\Controller;
 class MenuController extends AbstractBasicController
 {
 
+    protected $title = '菜单管理';
     protected $module = 'menu';
-    protected $redirect = 'menu';
-    protected $route = 'menu';
     protected $fillable = [
         'name' => '菜单名称',
         'url' => '菜单链接'

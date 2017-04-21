@@ -16,7 +16,6 @@
                     </div>
                 </div>
             @endforeach
-
             <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
                     <button class="btn btn-info" type="submit">

@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends AbstractBasicController
 {
-
-    protected $module = 'user';
-    protected $route = 'user';
+    protected $title = '用户管理';
     protected $fillable = [
         'email' => '邮箱',
         'name' => '名字',

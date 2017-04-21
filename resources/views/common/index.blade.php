@@ -2,9 +2,9 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            用户管理
+            {{$title}}
             <small>
-                <a href="{{url('menu/create')}}"><i class="ace-icon fa fa-angle-double-right"></i>新建</a>
+                <a href="{{route($route.'.create')}}"><i class="ace-icon fa fa-angle-double-right"></i>新建</a>
             </small>
         </h1>
     </div><!-- /.page-header -->
@@ -36,8 +36,8 @@
                                         <!--<button class="btn btn-xs btn-success">
                                             <i class="ace-icon fa fa-check bigger-120"></i>
                                         </button>   -->
-
-                                        <a href="{{url($route.'/'.$item->id.'/edit')}}" class="btn btn-xs btn-info">
+                                        <a href="{{ route($route.'.edit',['id'=>$item->id])   }}"
+                                           class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 

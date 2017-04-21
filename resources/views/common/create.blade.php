@@ -7,7 +7,7 @@
     </div><!-- /.page-header -->
     <div class="row">
         <div class="col-xs-6">
-            {!!  Form::open(['url' => $module,'class'=> 'form-horizontal']) !!}
+            {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}
             @foreach($fillable as $key=>$val)
                 <div class="form-group">
                     {{ Form::label($key, $val, ['class' => 'col-sm-3 control-label no-padding-right'])}}

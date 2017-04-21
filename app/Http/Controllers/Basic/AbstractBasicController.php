@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Basic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Route;
+
 abstract class AbstractBasicController extends Controller
 {
     protected $render = [];
+    protected $title = 'dashboard';
     protected $model;
     protected $fillable = [];
     protected $opration = [];
     protected $hidden = [];
-    protected $route = 'home';
-    protected $module = '/';
     protected $view = 'common';
-    protected $redirect = '/';
 
 
     public function __construct()
@@ -25,8 +25,15 @@ abstract class AbstractBasicController extends Controller
         }
         $this->render['fillable'] = $this->fillable;
         $this->render['opration'] = $this->opration;
-        $this->render['module'] = $this->module;
-        $this->render['route'] = $this->route;
+        $route = $this->route();
+        $this->render['route'] = $route;
+        $this->render['title'] = $this->title;
+    }
+
+    protected function route()
+    {
+        $route = Route::currentRouteName();
+        return substr($route, 0, strpos($route, '.'));
     }
 
     /**
@@ -132,7 +139,7 @@ abstract class AbstractBasicController extends Controller
     protected function redirect($url)
     {
         if (!$url) {
-            $url = url($this->redirect);
+            $url = url($this->route());
         }
         return redirect($url);
     }
