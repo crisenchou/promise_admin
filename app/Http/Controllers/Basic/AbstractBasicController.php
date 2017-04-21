@@ -82,7 +82,8 @@ abstract class AbstractBasicController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = $this->model->find($id);
+        return $this->view('show', ['model' => $model]);
     }
 
     /**
@@ -104,7 +105,11 @@ abstract class AbstractBasicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $model = $this->model->find($id);
+        if ($model->update($request->except('_token'))) {
+            return $this->success();
+        }
+        return $this->success();
     }
 
     /**
@@ -115,7 +120,11 @@ abstract class AbstractBasicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = $this->model->find($id);
+        if ($model->delete()) {
+            return $this->success();
+        }
+        return $this->error();
     }
 
 
