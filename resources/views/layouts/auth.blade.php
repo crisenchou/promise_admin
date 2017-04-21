@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}"/>
     <!-- page specific plugin styles -->
-    @stack('css')
+@stack('css')
 
-    <!-- text fonts -->
+<!-- text fonts -->
     <link rel="stylesheet" href="{{asset('assets/css/fonts.googleapis.com.css')}}"/>
 
     <!-- ace styles -->
@@ -47,7 +47,7 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">{{$app_name}}</span>
+                            <span class="red">{{config('app.name')}}</span>
                             <span class="white" id="id-text2">系统</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; crisenchou</h4>
