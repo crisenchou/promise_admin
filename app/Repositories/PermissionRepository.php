@@ -2,14 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Menu;
+use App\Permission;
 use Bosnadev\Repositories\Eloquent\Repository;
 
-class MenuRepository extends Repository
+class PermissionRepository extends Repository
 {
     public function model()
     {
-        return Menu::class;
+        return Permission::class;
     }
-    
 }

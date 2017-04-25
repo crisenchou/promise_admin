@@ -30,6 +30,12 @@ abstract class AbstractBasicController extends Controller
         $this->render['title'] = $this->title;
     }
 
+
+    protected function init()
+    {
+        static::init();
+    }
+
     protected function route()
     {
         $route = Route::currentRouteName();
@@ -136,6 +142,7 @@ abstract class AbstractBasicController extends Controller
      */
     protected function view($view, $render = [])
     {
+        $this->init();
         $view = $this->view . '.' . $view;
         return view($view, array_merge($this->render, $render));
     }

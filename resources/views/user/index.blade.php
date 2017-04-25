@@ -97,7 +97,6 @@
                                                         </span>
                                                     </a>
                                                 </li>
-
                                                 <li>
                                                     <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
                                                         <span class="red">
@@ -118,7 +117,7 @@
                                                 <div class="text-center">
                                                     <img height="150" class="thumbnail inline no-margin-bottom"
                                                          alt="Domain Owner's Avatar"
-                                                         src="assets/images/avatars/profile-pic.jpg"/>
+                                                         src="{{asset('assets/images/avatars/profile-pic.jpg')}}"/>
                                                     <br/>
                                                     <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                                         <div class="inline position-relative">

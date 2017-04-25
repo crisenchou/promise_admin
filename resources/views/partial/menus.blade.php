@@ -1,6 +1,6 @@
-@if(isset($menus) && count($menus))
+@if(isset($menusTree) && count($menusTree))
     <ul class="nav nav-list">
-        @foreach($menus as $menu)
+        @foreach($menusTree as $menu)
             <li class="active">
                 <a href="{{$menu['url']}}" @if($menu['submenu']) class="dropdown-toggle" @endif>
                     <i class="menu-icon fa {{$menu['icon'] or 'fa-tachometer'}}"></i>

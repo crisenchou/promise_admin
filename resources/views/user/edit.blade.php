@@ -11,6 +11,9 @@
     </div><!-- /.page-header -->
 
     {!! Form::model($user, ['route' => ['user.update', $user->id]]) !!}
+
+    {{method_field('put')}}
+
     {{ Form::text('email', old('email'))}}
 
     {!! Form::close() !!}
