@@ -8,7 +8,7 @@ class Menu extends Model
 {
 
 
-    public $fillable = ['name', 'url'];
+    public $fillable = ['parent_id','permission_id','name', 'url', 'target', 'icon', 'status'];
 
     /**
      * The roles that belong to the user.

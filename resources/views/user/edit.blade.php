@@ -9,12 +9,15 @@
             </small>
         </h1>
     </div><!-- /.page-header -->
+    <div class="row">
+        <div class="col-xs-12">
+            {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
+            {{method_field('put')}}
+            {{ Form::bsText('name', '用户名称',$model->name )}}
+            {{ Form::bsText('url', '邮箱',$model->url )}}
+            {{ Form::bsButton() }}
 
-    {!! Form::model($user, ['route' => ['user.update', $user->id]]) !!}
-
-    {{method_field('put')}}
-
-    {{ Form::text('email', old('email'))}}
-
-    {!! Form::close() !!}
+            {!! Form::close() !!}
+        </div>
+    </div>
 @endsection

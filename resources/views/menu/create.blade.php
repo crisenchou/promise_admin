@@ -10,12 +10,13 @@
         <div class="col-xs-6">
             {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}
             {{ Form::bsText('name', '菜单名称',old('name') )}}
-            {{ Form::bsText('url', '菜单链接',old('url') )}}
-            {{ Form::bsText('permission_id', '绑定权限',old('permission_id'))}}
-            {{ Form::bsText('parent_id', '父菜单' ,old('parent_id'))}}
-            {{ Form::bsText('target', '打开方式',old('target') )}}
-            {{ Form::bsText('icon', '菜单图标',old('icon')  )}}
-            {{Form::bsButton()}}
+            {{ Form::bsText('url', '菜单链接',old('url')  )}}
+            {{ Form::bsSelect('permission_id', '绑定权限',old('permission_id') ,$permissions)}}
+            {{ Form::bsSelect('parent_id', '父结点',old('parent_id'),$menus)}}
+            {{ Form::bsRadio('target', '打开方式' ,old('target') ,['_self'=>'当前窗口','_blank'=>'新窗口'])}}
+            {{ Form::bsSwitch('status','菜单状态',old('status') )}}
+            {{ Form::bsIcon('icon', '菜单图标' ,old('icon') ,$icons)}}
+            {{ Form::bsButton() }}
             {!! Form::close() !!}
         </div>
     </div>

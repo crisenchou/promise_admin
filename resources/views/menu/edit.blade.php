@@ -11,11 +11,12 @@
             {{method_field('put')}}
             {{ Form::bsText('name', '菜单名称',$model->name )}}
             {{ Form::bsText('url', '菜单链接',$model->url )}}
-            {{ Form::bsSelect('permission_id', '绑定权限',$permissions,$model->permission_id)}}
-            {{ Form::bsSelect('parent_id', '父结点',$menus,$model->parent_id)}}
-            {{ Form::bsText('target', '打开方式' )}}
-            {{ Form::bsText('icon', '菜单图标' )}}
-            {{Form::bsButton()}}
+            {{ Form::bsSelect('permission_id', '绑定权限',$model->permission_id,$permissions)}}
+            {{ Form::bsSelect('parent_id', '父结点',$model->parent_id,$menus)}}
+            {{ Form::bsRadio('target', '打开方式' ,$model->target ,['_self'=>'当前窗口','_blank'=>'新窗口'])}}
+            {{ Form::bsSwitch('status','菜单状态',$model->status )}}
+            {{ Form::bsIcon('icon', '菜单图标' ,$model->icon ,$icons)}}
+            {{ Form::bsButton() }}
             {!! Form::close() !!}
         </div>
     </div>

@@ -14,11 +14,14 @@ class ComponentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Form::component('bsText', 'components.form.text', ['name', 'trans' => '', 'value' => null, 'attributes' => []]);
-        Form::component('bsButton', 'components.form.button', ['name', 'trans' => '', 'value' => null, 'attributes' => []]);
-        Form::component('bsSwtich', 'components.form.switch', ['name', 'trans' => '', 'value' => null, 'attributes' => []]);
-        Form::component('bsSelect', 'components.form.select', ['name', 'trans' => '', 'select' => null, 'default' => null]);
-        Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'trans' => '', 'value' => null, 'attributes' => []]);
+        Form::component('bsText', 'components.form.text', ['name', 'trans' => null, 'default' => null, 'attributes' => []]);
+        Form::component('bsButton', 'components.form.button', ['name', 'trans' => null, 'default' => null, 'attributes' => []]);
+        Form::component('bsSwitch', 'components.form.switch', ['name', 'trans' => null, 'default' => null, 'attributes' => []]);
+        Form::component('bsSelect', 'components.form.select', ['name', 'trans' => null, 'default' => null, 'select' => null,]);
+        Form::component('bsRadio', 'components.form.radio', ['name', 'trans' => null, 'default' => null, 'radio' => null]);
+        Form::component('bsIcon', 'components.form.icon', ['name', 'trans' => null, 'default' => null, 'icons' => null,]);
+        Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'trans' => '', 'checkbox' => null, 'attributes' => []]);
+
     }
 
     /**

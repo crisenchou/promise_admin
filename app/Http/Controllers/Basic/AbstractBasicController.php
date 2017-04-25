@@ -33,7 +33,7 @@ abstract class AbstractBasicController extends Controller
 
     protected function init()
     {
-        static::init();
+
     }
 
     protected function route()
