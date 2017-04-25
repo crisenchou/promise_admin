@@ -1,0 +1,31 @@
+<?php
+/**
+ * author: crisen
+ * email: crisen@crisen.org
+ * date: 2017/4/14 16:14
+ * description:
+ */
+namespace DummyNamespace;
+
+use Illuminate\View\View;
+
+class DummyClass
+{
+
+
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * Bind data to the view.
+     *
+     * @param  View $view
+     * @return void
+     */
+    public function compose(View $view)
+    {
+
+    }
+}

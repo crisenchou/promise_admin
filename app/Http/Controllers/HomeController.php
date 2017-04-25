@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\LoginShipped;
+use App\Menu;
 use Illuminate\Http\Request;
 use Mail;
 use Auth;
