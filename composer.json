@@ -9,6 +9,7 @@
   "type": "project",
   "require": {
     "php": ">=7",
+    "barryvdh/laravel-debugbar": "^2.3",
     "barryvdh/laravel-ide-helper": "^2.2",
     "bosnadev/repositories": " 0.*",
     "guzzlehttp/guzzle": "^6.2",
