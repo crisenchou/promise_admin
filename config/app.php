@@ -170,6 +170,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Bosnadev\Repositories\Providers\RepositoryProvider::class,
 
 
         /*

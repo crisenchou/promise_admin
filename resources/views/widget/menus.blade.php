@@ -24,7 +24,7 @@
                                     </li>
                                 @else
                                     <li>
-                                        <a href="{{$submenu->url}}">
+                                        <a href="{{$submenu->url}}" target="{{$submenu->target}}">
                                             <i class="menu-icon fa {{$submenu->icon or 'fa-tachometer'}}"></i>
                                             <span class="menu-text">	{{$submenu->name}}</span>
                                         </a>
@@ -34,7 +34,7 @@
                         </ul>
                     @endif
                 @else
-                    <a href="{{$menu->url}}">
+                    <a href="{{$menu->url}}" target="{{$menu->target}}">
                         <i class="menu-icon fa {{$menu->icon or 'fa-tachometer'}}"></i>
                         <span class="menu-text">
 								{{$menu->name}}
