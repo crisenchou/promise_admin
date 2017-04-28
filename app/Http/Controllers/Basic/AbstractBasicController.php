@@ -30,7 +30,6 @@ abstract class AbstractBasicController extends Controller
         $this->render['title'] = $this->title;
     }
 
-
     protected function init()
     {
 
