@@ -8,7 +8,7 @@
 
     
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-6">
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
             {{method_field('put')}}
             {{ Form::bsText('name', '菜单名称',$model->name )}}

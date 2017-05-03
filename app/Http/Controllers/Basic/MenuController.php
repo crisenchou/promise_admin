@@ -45,6 +45,7 @@ class MenuController extends AbstractBasicController
      */
     protected function init()
     {
+        parent::init();
         $icons = config('icon');
         $this->render['icons'] = $icons;
         $permissions = app()->make(PermissionRepository::class)->all();

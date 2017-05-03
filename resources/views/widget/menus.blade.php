@@ -3,7 +3,7 @@
         @foreach($menusTree as $menu)
             <li @if($menu->active) class="active" @endif>
                 @if(count($menu->subMenu))
-                    <a href="{{$menu->url}}" class="dropdown-toggle">
+                    <a href="{{url($menu->url)}}" class="dropdown-toggle">
                         <i class="menu-icon fa {{$menu->icon or 'fa-tachometer'}}"></i>
                         <span class="menu-text">
 								{{$menu->name}}
@@ -16,7 +16,7 @@
                             @foreach($menu->subMenu as $submenu)
                                 @if(count($submenu->subMenu))
                                     <li>
-                                        <a href="{{$submenu->url}}" class="dropdown-toggle">
+                                        <a href="{{url($submenu->url)}}" class="dropdown-toggle">
                                             <i class="menu-icon fa {{$submenu->icon or 'fa-tachometer'}}"></i>
                                             <span class="menu-text">	{{$submenu->name}}</span>
                                             <b class="arrow fa fa-angle-down"></b>
@@ -34,7 +34,7 @@
                         </ul>
                     @endif
                 @else
-                    <a href="{{$menu->url}}" target="{{$menu->target}}">
+                    <a href="{{url($menu->url)}}" target="{{$menu->target}}">
                         <i class="menu-icon fa {{$menu->icon or 'fa-tachometer'}}"></i>
                         <span class="menu-text">
 								{{$menu->name}}
