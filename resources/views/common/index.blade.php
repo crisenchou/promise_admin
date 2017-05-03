@@ -17,8 +17,8 @@
                     <table id="simple-table" class="table  table-bordered table-hover">
                         <thead>
                         <tr>
-                            @foreach($fillable as $key=>$val)
-                                <th>{{$val}}</th>
+                            @foreach($fields as $field=>$type)
+                                <th>{{$field}}</th>
                             @endforeach
                             <th>操作</th>
                         </tr>
@@ -26,9 +26,9 @@
                         <tbody>
                         @foreach($list as $item)
                             <tr>
-                                @foreach($fillable as $key=>$val)
+                                @foreach($fields as $field)
                                     <td>
-                                        {{$item->$key}}
+                                        {{$item->$field}}
                                     </td>
                                 @endforeach
                                 <td>

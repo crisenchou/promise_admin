@@ -8,8 +8,9 @@
     <div class="row">
         <div class="col-xs-6">
             {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}
-            @foreach($fillable as $key=>$val)
-                {{ Form::bsText($key, $val, old($key))}}
+            @foreach($fields as $field=>$type)
+
+                {{ Form::$type($field, trans($field), old($field))}}
             @endforeach
             {{Form::bsButton()}}
             {!! Form::close() !!}

@@ -8,14 +8,12 @@
     <div class="row">
         <div class="col-xs-6">
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
-
             {{method_field('put')}}
-            @foreach($fillable as $key=>$val)
-               {{ Form::bsText($key, $val)}}
+            @foreach($fields as $field)
+                {{ Form::bsText($key, $val)}}
+                {{ Form::$fieldType[$field]($field, $fieldTrans[$field], $model->field)}}
             @endforeach
-
             {{Form::bsButton()}}
-
             {!! Form::close() !!}
         </div>
     </div>

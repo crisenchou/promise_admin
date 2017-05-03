@@ -10,36 +10,57 @@ use Route;
 abstract class AbstractBasicController extends Controller
 {
     protected $render = [];
-    protected $title = 'dashboard';
+    protected $title;
     protected $model;
-    protected $fillable = [];
+    protected $fields = [];
     protected $opration = [];
     protected $hidden = [];
-    protected $view = 'common';
+    protected $view;
 
+
+    protected function viewPath()
+    {
+        return 'common';
+    }
+
+    protected function fields()
+    {
+        return [
+            'name' => 'bsText'
+        ];
+    }
+
+    protected function fieldsTrans()
+    {
+        return [
+            'name' => 'name',
+        ];
+    }
+
+    protected function title()
+    {
+        return 'dashboard';
+    }
 
     public function __construct()
     {
         if (static::model()) {
             $this->model = app()->make(static::model());
-        }
-        $this->render['fillable'] = $this->fillable;
-        $this->render['opration'] = $this->opration;
+        };
+        $this->view = $this->viewPath();
+        $this->title = $this->title();
+    }
+
+
+    protected function init()
+    {
         $route = $this->route();
+        $this->render['fields'] = $this->fields();
+        $this->render['fieldsTrans'] = $this->fieldsTrans();
         $this->render['route'] = $route;
         $this->render['title'] = $this->title;
     }
 
-    protected function init()
-    {
-
-    }
-
-    protected function route()
-    {
-        $route = Route::currentRouteName();
-        return substr($route, 0, strpos($route, '.'));
-    }
 
     /**
      * static bind get model
@@ -56,7 +77,10 @@ abstract class AbstractBasicController extends Controller
     public function index()
     {
         $list = $this->model->all();
-        return $this->view('index', ['list' => $list]);
+        if (!empty($list)) {
+            return $this->view('index', ['list' => $list]);
+        }
+        return $this->error('/', 'empty list');
     }
 
     /**
@@ -142,7 +166,11 @@ abstract class AbstractBasicController extends Controller
     protected function view($view, $render = [])
     {
         $this->init();
-        $view = $this->view . '.' . $view;
+        $path = $this->view;
+        if ($path) {
+            $view = $this->view . '.' . $view;
+        }
+
         return view($view, array_merge($this->render, $render));
     }
 
@@ -176,8 +204,8 @@ abstract class AbstractBasicController extends Controller
         return $this->redirect($url)->with(['message' => '保存成功']);
     }
 
-    protected function error($url = '')
+    protected function error($url = '', $message = '保存失败')
     {
-        return $this->redirect($url)->with(['message' => '保存失败']);
+        return $this->redirect($url)->with(['message' => $message]);
     }
 }

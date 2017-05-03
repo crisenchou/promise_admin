@@ -35,4 +35,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+
+    public function getStatusAttribute($status)
+    {
+        $statusArr = [
+            -1 => '禁用',
+            0 => '未激活',
+            1 => '激活'
+        ];
+        return $statusArr[$status];
+    }
+
 }

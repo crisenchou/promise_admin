@@ -10,16 +10,37 @@ use App\Http\Controllers\Controller;
 class MenuController extends AbstractBasicController
 {
 
-    protected $title = '菜单管理';
-    protected $view = 'menu';
-
-
+    /**
+     * set model
+     * @return mixed
+     */
     public static function model()
     {
         return MenuRepository::class;
     }
 
 
+    /**
+     * set the view path
+     * @return string
+     */
+    protected function viewPath()
+    {
+        return 'menu';
+    }
+
+    /**
+     * set the title
+     * @return string
+     */
+    protected function title()
+    {
+        return '菜单管理';
+    }
+
+    /**
+     * init
+     */
     protected function init()
     {
         $icons = config('icon');
@@ -30,6 +51,11 @@ class MenuController extends AbstractBasicController
         $this->render['menus'] = array_merge(['0' => '根路径'], $this->createMap($menus));
     }
 
+    /**
+     * create the mapArr
+     * @param $collection
+     * @return mixed
+     */
     private function createMap($collection)
     {
         $flattened = $collection->mapWithKeys(function ($values) {
