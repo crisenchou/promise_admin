@@ -29,6 +29,7 @@ class MenuController extends AbstractBasicController
         return 'menu';
     }
 
+
     /**
      * set the title
      * @return string
@@ -37,6 +38,7 @@ class MenuController extends AbstractBasicController
     {
         return '菜单管理';
     }
+
 
     /**
      * init

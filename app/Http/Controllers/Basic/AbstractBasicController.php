@@ -15,31 +15,32 @@ abstract class AbstractBasicController extends Controller
     protected $fields = [];
     protected $opration = [];
     protected $hidden = [];
-    protected $view;
+    protected $viewPath = 'common';
 
 
-    protected function viewPath()
+    public function getTitle()
     {
-        return 'common';
+        if (method_exists($this, 'title')) {
+            return $this->title();
+        }
+        return property_exists($this, 'title') ? $this->title : 'home';
     }
 
-    protected function fields()
+    public function getViewPath()
     {
-        return [
-            'name' => 'bsText'
-        ];
+        if (method_exists($this, 'viewPath')) {
+            return $this->title();
+        }
+        return property_exists($this, 'viewPath') ? $this->title : 'common';
     }
 
-    protected function fieldsTrans()
-    {
-        return [
-            'name' => 'name',
-        ];
-    }
 
-    protected function title()
+    public function getRoute()
     {
-        return 'dashboard';
+        if (method_exists($this, 'route')) {
+            return $this->title();
+        }
+        return property_exists($this, 'route') ? $this->title : '';
     }
 
     public function __construct()
@@ -47,18 +48,15 @@ abstract class AbstractBasicController extends Controller
         if (static::model()) {
             $this->model = app()->make(static::model());
         };
-        $this->view = $this->viewPath();
-        $this->title = $this->title();
     }
 
 
     protected function init()
     {
-        $route = $this->route();
+        $this->render['title'] = $this->getTitle();
+        $this->render['route'] = $this->getRoute();
         $this->render['fields'] = $this->fields();
         $this->render['fieldsTrans'] = $this->fieldsTrans();
-        $this->render['route'] = $route;
-        $this->render['title'] = $this->title;
     }
 
 
@@ -166,7 +164,7 @@ abstract class AbstractBasicController extends Controller
     protected function view($view, $render = [])
     {
         $this->init();
-        $path = $this->view;
+        $path = $this->getViewPath();
         if ($path) {
             $view = $this->view . '.' . $view;
         }
