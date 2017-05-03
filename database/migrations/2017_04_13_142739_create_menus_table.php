@@ -19,9 +19,9 @@ class CreateMenusTable extends Migration
             $table->integer('permission_id')->default(0);
             $table->string('name', 20);
             $table->string('url', 60);
-            $table->string('icon', 20);
+            $table->string('icon', 20)->nullable();
             $table->string('target', 10)->nullable();
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
