@@ -29,18 +29,26 @@ abstract class AbstractBasicController extends Controller
     public function getViewPath()
     {
         if (method_exists($this, 'viewPath')) {
-            return $this->title();
+            return $this->viewPath();
         }
-        return property_exists($this, 'viewPath') ? $this->title : 'common';
+        return property_exists($this, 'viewPath') ? $this->viewPath : 'common';
     }
 
 
     public function getRoute()
     {
         if (method_exists($this, 'route')) {
-            return $this->title();
+            return $this->route();
         }
-        return property_exists($this, 'route') ? $this->title : '';
+        return property_exists($this, 'route') ? $this->route : '';
+    }
+
+    public function getFields()
+    {
+        if (method_exists($this, 'fields')) {
+            return $this->fields();
+        }
+        return property_exists($this, 'fields') ? $this->fields : '';
     }
 
     public function __construct()
@@ -55,8 +63,7 @@ abstract class AbstractBasicController extends Controller
     {
         $this->render['title'] = $this->getTitle();
         $this->render['route'] = $this->getRoute();
-        $this->render['fields'] = $this->fields();
-        $this->render['fieldsTrans'] = $this->fieldsTrans();
+        $this->render['fields'] = $this->getFields();
     }
 
 
@@ -166,9 +173,8 @@ abstract class AbstractBasicController extends Controller
         $this->init();
         $path = $this->getViewPath();
         if ($path) {
-            $view = $this->view . '.' . $view;
+            $view = $path . '.' . $view;
         }
-
         return view($view, array_merge($this->render, $render));
     }
 

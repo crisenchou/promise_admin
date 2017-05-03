@@ -26,7 +26,7 @@
                         <tbody>
                         @foreach($list as $item)
                             <tr>
-                                @foreach($fields as $field)
+                                @foreach($fields as $field=>$type)
                                     <td>
                                         {{$item->$field}}
                                     </td>

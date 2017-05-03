@@ -20,12 +20,6 @@ class RoleController extends AbstractBasicController
         return '角色管理';
     }
 
-    protected function viewNamespace()
-    {
-        return 'role';
-    }
-
-
     protected function fields()
     {
         return [
