@@ -29,8 +29,11 @@ class VerifyRole
     {
         if ($this->auth->check()) {
             $user = $this->auth->user();
-            $user->can('access', $role);
-            return $next($request);
+            $role = Role::whereName($role)->first();
+            if ($user->hasRole($role)) {
+                return $next($request);
+            }
+
         }
         return back();
     }
