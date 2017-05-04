@@ -143,7 +143,7 @@ abstract class AbstractBasicController extends Controller
         if ($model->update($request->except('_token'))) {
             return $this->success();
         }
-        return $this->success();
+        return $this->error();
     }
 
     /**

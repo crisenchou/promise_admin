@@ -18,10 +18,10 @@ class ComponentServiceProvider extends ServiceProvider
         Form::component('bsButton', 'components.form.button', ['name', 'trans' => null, 'default' => null, 'attributes' => []]);
         Form::component('bsSwitch', 'components.form.switch', ['name', 'trans' => null, 'default' => null, 'attributes' => []]);
         Form::component('bsSelect', 'components.form.select', ['name', 'trans' => null, 'default' => null, 'select' => null,]);
+        Form::component('bsSelectMuliple', 'components.form.select-muliple', ['name', 'trans' => null, 'default' => null, 'select' => null,]);
         Form::component('bsRadio', 'components.form.radio', ['name', 'trans' => null, 'default' => null, 'radio' => null]);
         Form::component('bsIcon', 'components.form.icon', ['name', 'trans' => null, 'default' => null, 'icons' => null,]);
-        Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'trans' => '', 'checkbox' => null, 'attributes' => []]);
-
+        //Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'trans' =>null, 'default' => null, 'attributes' => []]);
     }
 
     /**

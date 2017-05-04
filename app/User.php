@@ -37,6 +37,13 @@ class User extends Authenticatable
     }
 
 
+    public function hasRole($role)
+    {
+        $roles = $this->roles;
+        return $roles->contains($role);
+    }
+
+
     public function getStatusAttribute($status)
     {
         $statusArr = [

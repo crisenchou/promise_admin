@@ -14,9 +14,9 @@
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
             {{method_field('put')}}
             {{ Form::bsText('name', '用户名称',$model->name )}}
-            {{ Form::bsText('url', '邮箱',$model->url )}}
+            {{ Form::bsText('email', '邮箱',$model->email )}}
+            {{ Form::bsSelectMuliple('role_id', '角色','',$roles )}}
             {{ Form::bsButton() }}
-
             {!! Form::close() !!}
         </div>
     </div>
