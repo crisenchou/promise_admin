@@ -2,7 +2,10 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            新建
+            <a href="{{route($route.'.index')}}"> {{$title}} </a>
+            <small>
+                新建
+            </small>
         </h1>
     </div><!-- /.page-header -->
     <div class="row">

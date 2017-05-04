@@ -2,7 +2,11 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            编辑
+            <a href="{{route('menu.index')}}"> {{$title}} </a>
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                新建
+            </small>
         </h1>
     </div><!-- /.page-header -->
 

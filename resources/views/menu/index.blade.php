@@ -5,7 +5,7 @@
             菜单管理
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                菜单列表
+                <a href="{{route('menu.create')}}">新建</a>
             </small>
         </h1>
     </div><!-- /.page-header -->

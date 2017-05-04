@@ -31,7 +31,7 @@ class UserController extends AbstractBasicController
     public function init()
     {
         $roles = app()->make(RoleRepository::class)->all();
-        $this->render['roles'] = array_merge(['0' => '游客'], $this->createMap($roles));
+        $this->render['roles'] = $this->createMap($roles);
         parent::init();
     }
 

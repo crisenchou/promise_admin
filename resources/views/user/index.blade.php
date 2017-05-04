@@ -5,7 +5,7 @@
             用户管理
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                用户列表
+                <a href="{{route('user.create')}}">新建</a>
             </small>
         </h1>
     </div><!-- /.page-header -->

@@ -2,13 +2,14 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            用户管理
+            <a href="{{route('user.index')}}"> {{$title}} </a>
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                编辑用户
+                编辑
             </small>
         </h1>
     </div><!-- /.page-header -->
+
     <div class="row">
         <div class="col-xs-12">
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
