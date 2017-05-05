@@ -14,11 +14,4 @@ class Controller extends BaseController
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
-    protected function route()
-    {
-        $route = Route::currentRouteName();
-        return substr($route, 0, strpos($route, '.'));
-    }
-
 }

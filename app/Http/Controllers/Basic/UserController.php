@@ -11,8 +11,11 @@ use Illuminate\Support\Collection;
 
 class UserController extends AbstractBasicController
 {
-    protected $title = '用户管理';
-    protected $view = 'user';
+
+    public static function model()
+    {
+        return UserRepository::class;
+    }
 
     protected function title()
     {
@@ -24,30 +27,11 @@ class UserController extends AbstractBasicController
         return 'user';
     }
 
-    public static function model()
-    {
-        return UserRepository::class;
-    }
-
     public function init()
     {
         $roles = app()->make(RoleRepository::class)->all();
         $this->render['roles'] = $this->createMap($roles);
         parent::init();
-    }
-
-
-    /**
-     * create the mapArr
-     * @param $collection
-     * @return mixed
-     */
-    private function createMap(Collection $collection)
-    {
-        $flattened = $collection->mapWithKeys(function ($values) {
-            return [$values->id => $values->name];
-        });
-        return $flattened->all();
     }
 
 

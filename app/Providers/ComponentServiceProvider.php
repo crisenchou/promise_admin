@@ -22,6 +22,8 @@ class ComponentServiceProvider extends ServiceProvider
         Form::component('bsRadio', 'components.form.radio', ['name', 'trans' => null, 'default' => null, 'radio' => null]);
         Form::component('bsIcon', 'components.form.icon', ['name', 'trans' => null, 'default' => null, 'icons' => null,]);
         //Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'trans' =>null, 'default' => null, 'attributes' => []]);
+        Form::component('bsImage', 'components.form.image', ['name', 'trans' => null, 'default' => null]);
+        Form::component('bsTextarea', 'components.form.textarea', ['name', 'trans' => null, 'default' => null]);
     }
 
     /**

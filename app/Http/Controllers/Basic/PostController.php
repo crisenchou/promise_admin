@@ -18,4 +18,14 @@ class PostController extends AbstractBasicController
     }
 
 
+    public function fields()
+    {
+        return [
+            'title' => 'bsText',
+            'summary' => 'bsText',
+            'cover' => 'bsImage',
+            'content' => 'bsTextarea'
+        ];
+    }
+
 }
