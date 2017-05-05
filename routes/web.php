@@ -14,7 +14,7 @@
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth','role:admin']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('settings', 'HomeController@settings')->name('settings');
     Route::get('profile', 'HomeController@profile')->name('profile');
     Route::get('home', 'HomeController@index')->name('home');
@@ -23,4 +23,5 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
     Route::resource('menu', 'Basic\MenuController');
     Route::resource('role', 'Basic\RoleController');
     Route::resource('permission', 'Basic\PermissionController');
+    Route::resource('post', 'Basic\PostController');
 });

@@ -7,6 +7,7 @@ use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class UserController extends AbstractBasicController
 {
@@ -41,7 +42,7 @@ class UserController extends AbstractBasicController
      * @param $collection
      * @return mixed
      */
-    private function createMap($collection)
+    private function createMap(Collection $collection)
     {
         $flattened = $collection->mapWithKeys(function ($values) {
             return [$values->id => $values->name];
@@ -65,6 +66,7 @@ class UserController extends AbstractBasicController
     {
         $user = $this->model->find($id);
         if ($user->update($request->except('_token'))) {
+            $user->roles()->detach();
             $user->roles()->attach($request->get('role_id'));
             return $this->success();
         }
