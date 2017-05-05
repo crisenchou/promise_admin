@@ -10,7 +10,7 @@
     </div><!-- /.page-header -->
     <div class="row">
         <div class="col-xs-6">
-            {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}
+            {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal','files' => $upload]) !!}
             @foreach($fields as $field=>$type)
                 {{ Form::$type($field, trans($field), old($field))}}
             @endforeach

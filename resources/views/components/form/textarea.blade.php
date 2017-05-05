@@ -1,7 +1,7 @@
 <div class="form-group">
     <label class="col-sm-3 control-label no-padding-right" for="{{$name}}"> {{$trans}} </label>
     <div class="col-sm-9">
-        <textarea name="{{$name}}" data-provide="markdown" data-iconlibrary="fa" rows="10"></textarea>
+        <textarea name="{{$name}}" data-provide="markdown" data-iconlibrary="fa" rows="10">{{$default}}</textarea>
     </div>
 </div>
 

@@ -16,6 +16,7 @@ abstract class AbstractBasicController extends Controller
     protected $opration = [];
     protected $hidden = [];
     protected $viewPath = 'common';
+    protected $upload = false;
 
 
     public function getTitle()
@@ -57,6 +58,16 @@ abstract class AbstractBasicController extends Controller
         return property_exists($this, 'fields') ? $this->fields : '';
     }
 
+
+    public function isUpload()
+    {
+        if (method_exists($this, 'upload')) {
+            return $this->upload();
+        }
+        return property_exists($this, 'upload') ? $this->upload : '';
+    }
+
+
     public function __construct()
     {
         if (static::model()) {
@@ -70,6 +81,7 @@ abstract class AbstractBasicController extends Controller
         $this->render['title'] = $this->getTitle();
         $this->render['route'] = $this->getRoute();
         $this->render['fields'] = $this->getFields();
+        $this->render['upload'] = $this->isUpload();
     }
 
 

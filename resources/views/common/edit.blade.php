@@ -10,7 +10,7 @@
     </div><!-- /.page-header -->
     <div class="row">
         <div class="col-xs-6">
-            {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
+            {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal','files' => $upload]) !!}
             {{method_field('put')}}
             @foreach($fields as $field=>$type)
                 {{ Form::$type($field, $field, $model->$field)}}
