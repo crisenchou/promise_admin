@@ -20,9 +20,16 @@ class MenuPolicy
         //
     }
 
-    public function access(User $user, Menu $menu)
+
+    public function before(User $user, $ability)
     {
-        dd($user);
+        if ($user->isSuperAdmin()) {
+            return true;
+        }
     }
 
+    public function create(User $user, Menu $menu)
+    {
+        return $user->hasPermission($menu->permission_id);
+    }
 }

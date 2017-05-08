@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function isSuperAdmin()
+    {
+        return $this->name = 'root';
+    }
+
     /**
      * The roles that belong to the user.
      */
@@ -43,6 +49,16 @@ class User extends Authenticatable
         return $roles->contains($role);
     }
 
+    public function hasPermission($permission)
+    {
+        $roles = $this->roles;
+        foreach ($roles as $role) {
+            if ($role->contains($permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public function getStatusAttribute($status)
     {

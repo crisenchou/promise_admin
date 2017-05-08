@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Basic;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
@@ -9,6 +10,7 @@ use Route;
 
 abstract class AbstractBasicController extends Controller
 {
+
     protected $render = [];
     protected $title;
     protected $model;
@@ -17,6 +19,16 @@ abstract class AbstractBasicController extends Controller
     protected $hidden = [];
     protected $viewPath = 'common';
     protected $upload = false;
+    protected $user;
+
+    public function __construct(User $user)
+    {
+
+        $this->user = $user;
+        if (static::model()) {
+            $this->model = app()->make(static::model());
+        };
+    }
 
 
     public function getTitle()
@@ -68,14 +80,6 @@ abstract class AbstractBasicController extends Controller
     }
 
 
-    public function __construct()
-    {
-        if (static::model()) {
-            $this->model = app()->make(static::model());
-        };
-    }
-
-
     protected function init()
     {
         $this->render['title'] = $this->getTitle();
@@ -117,8 +121,10 @@ abstract class AbstractBasicController extends Controller
      */
     public function store(Request $request)
     {
-        if ($this->model->create($request->except('_token'))) {
-            return $this->success();
+        if ($this->user->can('create', get_class($this->model))) {
+            if ($this->model->create($request->except('_token'))) {
+                return $this->success();
+            }
         }
         return $this->error();
     }
@@ -153,8 +159,11 @@ abstract class AbstractBasicController extends Controller
     public function update(Request $request, $id)
     {
         $model = $this->model->find($id);
-        if ($model->update($request->except('_token'))) {
-            return $this->success();
+
+        if ($this->user->can('update', $model)) {
+            if ($model->update($request->except('_token'))) {
+                return $this->success();
+            }
         }
         return $this->error();
     }
@@ -166,8 +175,10 @@ abstract class AbstractBasicController extends Controller
     public function destroy($id)
     {
         $model = $this->model->find($id);
-        if ($model->delete()) {
-            return $this->success();
+        if ($this->user->can('delete', $model)) {
+            if ($model->delete()) {
+                return $this->success();
+            }
         }
         return $this->error();
     }
