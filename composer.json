@@ -15,6 +15,7 @@
     "dingo/api": "1.0.x@dev",
     "guzzlehttp/guzzle": "^6.2",
     "laravel/dusk": "^1.0",
+    "laravel/envoy": "~1.0",
     "laravel/framework": "5.4.*",
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "^5.3.0",
