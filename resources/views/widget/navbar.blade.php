@@ -42,8 +42,9 @@
                         <li class="divider"></li>
                         <li>
                             <a href="#" onclick="return $('#logout').submit()">
-                                <form id="logout" action="{{route('logout')}}" type="post">
+                                <form id="logout" action="{{route('logout')}}" method="post">
                                     {{csrf_field()}}
+
                                     <i class="ace-icon fa fa-power-off"></i>
                                     退出
                                 </form>
