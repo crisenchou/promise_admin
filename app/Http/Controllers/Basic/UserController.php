@@ -2,56 +2,99 @@
 
 namespace App\Http\Controllers\Basic;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
-use App\Role;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 
 class UserController extends AbstractBasicController
 {
 
-    public static function model()
-    {
-        return UserRepository::class;
-    }
+    protected $user;
+    protected $role;
+    public $title = '用户管理';
 
-    protected function title()
+    public function __construct(UserRepository $user, RoleRepository $role)
     {
-        return '用户管理';
-    }
-
-    protected function viewPath()
-    {
-        return 'user';
+        $this->user = $user;
+        $this->role = $role;
     }
 
     public function init()
     {
-        $roles = app()->make(RoleRepository::class)->all();
+        $roles = $this->role->all();
         $this->render['roles'] = $this->createMap($roles);
         parent::init();
     }
 
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $model = $this->model->create($request->except('_token'));
-        if ($model) {
-            $model->roles()->attach($request->get('role_id'));
+        $user = $this->user->create($request->except('_token'));
+        if ($user) {
+            $user->roles()->attach($request->get('role_id'));
             return $this->success();
         }
         return $this->error();
     }
 
-
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $user = $this->model->find($id);
+        $user = $this->user->find($id);
         if ($user->update($request->except('_token'))) {
             $user->roles()->detach();
             $user->roles()->attach($request->get('role_id'));
+            return $this->success();
+        }
+        return $this->error();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $list = $this->user->all();
+        return $this->view('basic.user.index', ['list' => $list]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return $this->view('basic.user.create');
+    }
+
+
+    /**
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $model = $this->user->find($id);
+        return $this->view('basic.user.show', ['model' => $model]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $model = $this->user->find($id);
+        return $this->view('basic.user.edit', ['model' => $model]);
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $user = $this->user->find($id);
+        if ($user->delete()) {
             return $this->success();
         }
         return $this->error();

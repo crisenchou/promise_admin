@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Basic;
 
+use App\Menu;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,18 +18,8 @@ abstract class AbstractBasicController extends Controller
     protected $fields = [];
     protected $opration = [];
     protected $hidden = [];
-    protected $viewPath = 'common';
     protected $upload = false;
-    protected $user;
-
-    public function __construct(User $user)
-    {
-
-        $this->user = $user;
-        if (static::model()) {
-            $this->model = app()->make(static::model());
-        };
-    }
+    protected $route;
 
 
     public function getTitle()
@@ -37,14 +28,6 @@ abstract class AbstractBasicController extends Controller
             return $this->title();
         }
         return property_exists($this, 'title') ? $this->title : 'home';
-    }
-
-    public function getViewPath()
-    {
-        if (method_exists($this, 'viewPath')) {
-            return $this->viewPath();
-        }
-        return property_exists($this, 'viewPath') ? $this->viewPath : 'common';
     }
 
 
@@ -90,101 +73,6 @@ abstract class AbstractBasicController extends Controller
 
 
     /**
-     * static bind get model
-     * @return null
-     */
-    public static function model()
-    {
-        return null;
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
-    {
-        $list = $this->model->all();
-        return $this->view('index', ['list' => $list]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
-    {
-        return $this->view('create');
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        if ($this->user->can('create', get_class($this->model))) {
-            if ($this->model->create($request->except('_token'))) {
-                return $this->success();
-            }
-        }
-        return $this->error();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $model = $this->model->find($id);
-        return $this->view('show', ['model' => $model]);
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $model = $this->model->find($id);
-        return $this->view('edit', ['model' => $model]);
-    }
-
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $model = $this->model->find($id);
-
-        if ($this->user->can('update', $model)) {
-            if ($model->update($request->except('_token'))) {
-                return $this->success();
-            }
-        }
-        return $this->error();
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $model = $this->model->find($id);
-        if ($this->user->can('delete', $model)) {
-            if ($model->delete()) {
-                return $this->success();
-            }
-        }
-        return $this->error();
-    }
-
-
-    /**
      * render data
      * @param $view
      * @param array $render
@@ -193,10 +81,6 @@ abstract class AbstractBasicController extends Controller
     protected function view($view, $render = [])
     {
         $this->init();
-        $path = $this->getViewPath();
-        if ($path) {
-            $view = $path . '.' . $view;
-        }
         return view($view, array_merge($this->render, $render));
     }
 
@@ -226,22 +110,32 @@ abstract class AbstractBasicController extends Controller
 
 
     /**
-     * @param string $url
+     * @param null $message
+     * @param null $url
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function success($url = '')
+    protected function message($message = null, $url = null)
     {
-        return $this->redirect($url)->with(['message' => '保存成功']);
+        return $this->redirect($url)->with(['message' => $message]);
     }
 
+
     /**
-     * @param string $url
      * @param string $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function error($url = '', $message = '保存失败')
+    protected function success($message = '')
     {
-        return $this->redirect($url)->with(['message' => $message]);
+        return $this->message(['message' => $message]);
+    }
+
+    /**
+     * @param string $message
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function error($message = '保存失败')
+    {
+        return $this->message($message);
     }
 
     /**

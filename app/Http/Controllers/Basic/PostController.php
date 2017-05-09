@@ -8,16 +8,15 @@ use Auth;
 
 class PostController extends AbstractBasicController
 {
-    public static function model()
-    {
-        return PostRepository::class;
-    }
 
-    public function title()
-    {
-        return '文章管理';
-    }
+    protected $post;
+    protected $title = '文章管理';
 
+
+    public function __construct(PostRepository $post)
+    {
+        $this->post = $post;
+    }
 
     public function fields()
     {
@@ -37,12 +36,12 @@ class PostController extends AbstractBasicController
     public function store(Request $request)
     {
         $fill = $request->except(['_token', 'cover']);
-        $fill['user_id'] = Auth::user()->id;
+        $fill['user_id'] = Auth::id();
         if ($request->hasFile('cover')) {
             $path = $request->cover->store('images');
             $fill['cover'] = $path;
         }
-        if ($this->model->create($fill)) {
+        if ($this->post->create($fill)) {
             return $this->success();
         }
         return $this->error();
@@ -50,13 +49,67 @@ class PostController extends AbstractBasicController
 
     public function update(Request $request, $id)
     {
-        $post = $this->model->find($id);
+        $post = $this->post->find($id);
         $fill = $request->except(['_token', 'cover']);
         if ($request->hasFile('cover')) {
             $path = $request->cover->store('images');
             $fill['cover'] = $path;
         }
         if ($post->update($fill)) {
+            return $this->success();
+        }
+        return $this->error();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $list = $this->post->all();
+        return $this->view('common.index', ['list' => $list]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return $this->view('common.create');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $model = $this->post->find($id);
+        return $this->view('common.show', ['model' => $model]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $model = $this->post->find($id);
+        return $this->view('common.edit', ['model' => $model]);
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $model = $this->post->find($id);
+        if ($model->delete()) {
             return $this->success();
         }
         return $this->error();
