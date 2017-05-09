@@ -26,22 +26,20 @@ class MenuController extends AbstractBasicController
         parent::init();
         $icons = config('icon');
         $this->render['icons'] = $icons;
-        $permissions = $this->permission->all();
-        $this->render['permissions'] = array_merge(['0' => '所有权限'], $this->createMap($permissions));
-        $menus = $this->menu->all();
-        $this->render['menus'] = array_merge(['0' => '根路径'], $this->createMap($menus));
     }
 
 
     public function index()
     {
-        $list = $this->menu->all();
+        $list = $this->menu->findAllBy('parent_id', 0);
         return $this->view('basic.menu.index', ['list' => $list]);
     }
 
     public function create()
     {
-        return $this->view('basic.menu.create');
+        $permissions = $this->permission->all();
+        $menus = $this->menu->all();
+        return $this->view('basic.menu.create', compact($permissions, $menus));
     }
 
 
@@ -64,8 +62,10 @@ class MenuController extends AbstractBasicController
 
     public function edit($id)
     {
-        $model = $this->menu->find($id);
-        return $this->view('basic.menu.edit', ['model' => $model]);
+        $permissions = $this->permission->all();
+        $menus = $this->menu->all();
+        $menu = $this->menu->find($id);
+        return $this->view('basic.menu.edit', compact($permissions, $menus, $menu));
     }
 
 

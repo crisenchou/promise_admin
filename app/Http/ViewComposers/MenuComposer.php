@@ -7,18 +7,24 @@
  */
 namespace App\Http\ViewComposers;
 
+use App\Repositories\Criteria\MainMenu;
+use App\Repositories\Criteria\Submenu;
 use App\Repositories\MenuRepository;
 use Illuminate\View\View;
+use App\Menu;
 
 class MenuComposer
 {
 
     protected $menus;
 
-    public function __construct(MenuRepository $model)
+    public function __construct(MenuRepository $menu)
     {
-        $menus = $model->parent()->all();
+//        $menu->pushCriteria(new MainMenu());
+//        $menu->pushCriteria(new Submenu());
 
+        $menus = $menu->findAllBy('parent_id', 0);
+        //$menus = $menu->all();
         $this->menus = $menus;
     }
 

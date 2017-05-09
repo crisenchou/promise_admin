@@ -124,9 +124,9 @@ abstract class AbstractBasicController extends Controller
      * @param string $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function success($message = '')
+    protected function success($message = '保存成功')
     {
-        return $this->message(['message' => $message]);
+        return $this->message($message);
     }
 
     /**

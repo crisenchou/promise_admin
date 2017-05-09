@@ -11,10 +11,4 @@ class MenuRepository extends Repository
     {
         return Menu::class;
     }
-
-    public function parent()
-    {
-        $this->model->where('parent_id', 0);
-        return $this->model;
-    }
 }
