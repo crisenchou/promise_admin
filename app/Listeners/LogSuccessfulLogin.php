@@ -5,6 +5,8 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
+use App\Mail\Login as LoginMail;
 
 class LogSuccessfulLogin
 {
@@ -26,6 +28,7 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        //log the login info
+        $user = $event->user;
+        Mail::to($user->email)->queue(new LoginMail($user));
     }
 }
