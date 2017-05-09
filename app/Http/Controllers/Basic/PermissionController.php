@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Basic;
 
+use App\Http\Requests\PermissionRequest;
 use App\Repositories\PermissionRepository;
-use Illuminate\Http\Request;
 
 class PermissionController extends AbstractBasicController
 {
@@ -43,11 +43,7 @@ class PermissionController extends AbstractBasicController
         return $this->view('common.create');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
 
         if ($this->permission->create($request->except('_token'))) {
@@ -57,34 +53,21 @@ class PermissionController extends AbstractBasicController
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $model = $this->permission->find($id);
         return $this->view('common.show', ['model' => $model]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $model = $this->permission->find($id);
         return $this->view('common.edit', ['model' => $model]);
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
+
+    public function update(PermissionRequest $request, $id)
     {
         $model = $this->permission->find($id);
 
@@ -94,10 +77,7 @@ class PermissionController extends AbstractBasicController
         return $this->error();
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy($id)
     {
         $model = $this->permission->find($id);

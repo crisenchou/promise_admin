@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Basic;
 
+use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\RoleRepository;
@@ -17,7 +18,6 @@ class RoleController extends AbstractBasicController
         $this->role = $role;
     }
 
-
     protected function fields()
     {
         return [
@@ -26,28 +26,20 @@ class RoleController extends AbstractBasicController
         ];
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $list = $this->role->all();
         return $this->view('common.index', ['list' => $list]);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function create()
     {
         return $this->view('common.create');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
+
+    public function store(RoleRequest $request)
     {
         if ($this->role->create($request->except('_token'))) {
             return $this->success();
@@ -56,34 +48,21 @@ class RoleController extends AbstractBasicController
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $model = $this->role->find($id);
         return $this->view('common.show', ['model' => $model]);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $model = $this->role->find($id);
         return $this->view('common.edit', ['model' => $model]);
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
         $model = $this->role->find($id);
         if ($model->update($request->except('_token'))) {
@@ -92,10 +71,7 @@ class RoleController extends AbstractBasicController
         return $this->error();
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy($id)
     {
         $role = $this->role->find($id);
