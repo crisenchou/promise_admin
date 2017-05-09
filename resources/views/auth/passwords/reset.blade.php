@@ -11,7 +11,7 @@
                     </h4>
                     <div class="space-6"></div>
                     @include('message.validate')
-                    <form method="post">
+                    <form method="post" action="{{route('password.request')}}">
                         {{csrf_field()}}
                         <input type="hidden" name="token" value="{{ $token }}">
                         <fieldset>

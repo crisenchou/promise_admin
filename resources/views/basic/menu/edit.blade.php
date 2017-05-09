@@ -21,7 +21,7 @@
             {{ Form::bsSelect('parent_id', '父结点',$model->parent_id,$menus)}}
             {{ Form::bsRadio('target', '打开方式' ,$model->target ,['_self'=>'当前窗口','_blank'=>'新窗口'])}}
             {{ Form::bsSwitch('status','菜单状态',$model->status )}}
-            {{ Form::bsIcon('icon', '菜单图标' ,$model->icon ,$icons)}}
+            {{ Form::bsIcon('icon', '菜单图标' ,$model->icon )}}
             {{ Form::bsButton() }}
             {!! Form::close() !!}
         </div>

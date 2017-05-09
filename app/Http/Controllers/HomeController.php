@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        abort(404);
+        return view('home.profile');
     }
 
 
