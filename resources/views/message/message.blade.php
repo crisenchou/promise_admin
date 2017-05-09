@@ -8,7 +8,6 @@
                 <i class="ace-icon fa fa-check"></i>
                 {{ session('message') }}
             </strong>
-            {{ session('message') }}
         </p>
     </div>
 @endif

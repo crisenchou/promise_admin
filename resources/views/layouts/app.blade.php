@@ -44,22 +44,22 @@
         }
     </script>
     @section('sidebar')
-        @include('partial.sidebar')
+        @include('widget.sidebar')
     @show
     <div class="main-content">
         <div class="main-content-inner">
             @section('breadcrumbs')
-                @include('partial.breadcrumbs')
+                @include('widget.breadcrumbs')
             @show
             <div class="page-content">
-                @include('partial.message')
-                @include('partial.settings')
+                @include('message.message')
+                @include('widget.settings')
                 @yield('page-content')
             </div><!-- /.page-content -->
         </div>
     </div><!-- /.main-content -->
-    @include('partial.footer')
-    @include('partial.scroll-up')
+    @include('widget.footer')
+    @include('widget.scroll-up')
 </div><!-- /.main-container -->
 <!-- basic scripts -->
 <!--[if !IE]> -->

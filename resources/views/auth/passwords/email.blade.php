@@ -11,7 +11,7 @@
                     </h4>
                     <div class="space-6"></div>
 
-                    @include('partial.validate')
+                    @include('message.validate')
                     <p>
                         填写邮箱并接受消息
                     </p>

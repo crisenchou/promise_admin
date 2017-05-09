@@ -10,7 +10,7 @@
                         注册新用户
                     </h4>
                     <div class="space-6"></div>
-                    @include('partial.validate')
+                    @include('message.validate')
                     <form method="post">
                         {{csrf_field()}}
                         <fieldset>

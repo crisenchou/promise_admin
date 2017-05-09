@@ -10,7 +10,7 @@
                         重置密码
                     </h4>
                     <div class="space-6"></div>
-                    @include('partial.validate')
+                    @include('message.validate')
                     <form method="post">
                         {{csrf_field()}}
                         <input type="hidden" name="token" value="{{ $token }}">
