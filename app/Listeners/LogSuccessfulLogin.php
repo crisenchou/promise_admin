@@ -28,7 +28,8 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        $user = $event->user;
-        Mail::to($user->email)->queue(new LoginMail($user));
+        //to do something
+        //$user = $event->user;
+        //Mail::to($user->email)->queue(new LoginMail($user));
     }
 }
