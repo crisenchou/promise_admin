@@ -24,7 +24,6 @@
                                     <span class="lbl"></span>
                                 </label>
                             </th>
-                            <th class="detail-col">详情</th>
                             <th>邮箱</th>
                             <th>名字</th>
                             <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>加入时间</th>
@@ -41,16 +40,6 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-
-                                <td class="center">
-                                    <div class="action-buttons">
-                                        <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                            <i class="ace-icon fa fa-angle-double-down"></i>
-                                            <span class="sr-only">Details</span>
-                                        </a>
-                                    </div>
-                                </td>
-
                                 <td>
                                     {{$user->email}}
                                 </td>
@@ -67,7 +56,8 @@
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 
-                                        <button class="btn btn-xs btn-danger">
+                                        <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                                data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
 
@@ -109,104 +99,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="detail-row">
-                                <td colspan="8">
-                                    <div class="table-detail">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-2">
-                                                <div class="text-center">
-                                                    <img height="150" class="thumbnail inline no-margin-bottom"
-                                                         alt="Domain Owner's Avatar"
-                                                         src="{{asset('assets/images/avatars/profile-pic.jpg')}}"/>
-                                                    <br/>
-                                                    <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                                        <div class="inline position-relative">
-                                                            <a class="user-title-label" href="#">
-                                                                <i class="ace-icon fa fa-circle light-green"></i>
-                                                                &nbsp;
-                                                                <span class="white">{{$user->name}}</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-7">
-                                                <div class="space visible-xs"></div>
-
-                                                <div class="profile-user-info profile-user-info-striped">
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> 名字</div>
-                                                        <div class="profile-info-value">
-                                                            <span>{{$user->name}}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> 位置</div>
-
-                                                        <div class="profile-info-value">
-                                                            <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                                            <span>Netherlands, Amsterdam</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> 年龄</div>
-
-                                                        <div class="profile-info-value">
-                                                            <span>{{$user->age}}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> 加入时间</div>
-
-                                                        <div class="profile-info-value">
-                                                            <span>{{$user->created_at}}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> 最后登陆</div>
-
-                                                        <div class="profile-info-value">
-                                                            <span>{{$user->lastLogin}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-3">
-                                                <div class="space visible-xs"></div>
-                                                <h4 class="header blue lighter less-margin">发送邮件</h4>
-                                                <div class="space-6"></div>
-                                                <form>
-                                                    <fieldset>
-                                                    <textarea class="width-100" resize="none"
-                                                              placeholder="请输入"></textarea>
-                                                    </fieldset>
-
-                                                    <div class="hr hr-dotted"></div>
-
-                                                    <div class="clearfix">
-                                                        <label class="pull-left">
-                                                            <input type="checkbox" class="ace"/>
-                                                            <span class="lbl"> 给我发送一份拷贝</span>
-                                                        </label>
-
-                                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round"
-                                                                type="button">
-                                                            提交
-                                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -217,18 +109,32 @@
     </div><!-- /.row -->
 
 
-    <div id="dialog-confirm" class="hide">
-        <div class="alert alert-info bigger-110">
-            These items will be permanently deleted and cannot be recovered.
-        </div>
 
-        <div class="space-6"></div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">对话框</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info bigger-110">
+                        删除了无法恢复,确定要执行该操作么？
+                    </div>
+                    <div class="space-6"></div>
+                    <p class="bigger-110 bolder center grey">
+                        <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                        Are you sure?
+                    </p></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 
-        <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Are you sure?
-        </p>
-    </div><!-- #dialog-confirm -->
 
 @endsection
 @push('scripts')
@@ -282,13 +188,6 @@
             if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
             return 'left';
         }
-
-        /***************/
-        $('.show-details-btn').on('click', function (e) {
-            e.preventDefault();
-            $(this).closest('tr').next().toggleClass('open');
-            $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-        });
 
     })
 </script>

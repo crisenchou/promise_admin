@@ -41,7 +41,8 @@
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 
-                                        <button class="btn btn-xs btn-danger">
+                                        <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                                data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
 
@@ -92,6 +93,34 @@
             <!-- PAGE CONTENT ENDS -->
         </div><!-- /.col -->
     </div><!-- /.row -->
+
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">对话框</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info bigger-110">
+                        删除了无法恢复,确定要执行该操作么？
+                    </div>
+                    <div class="space-6"></div>
+                    <p class="bigger-110 bolder center grey">
+                        <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                        Are you sure?
+                    </p></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
 @endsection
 @push('scripts')
 <!-- page specific plugin scripts -->
@@ -141,12 +170,6 @@
             return 'left';
         }
 
-        /***************/
-        $('.show-details-btn').on('click', function (e) {
-            e.preventDefault();
-            $(this).closest('tr').next().toggleClass('open');
-            $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-        });
 
     })
 </script>
