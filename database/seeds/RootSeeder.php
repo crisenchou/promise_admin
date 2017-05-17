@@ -21,12 +21,15 @@ class RootSeeder extends Seeder
      */
     public function run()
     {
-        $user = $this->user->findBy('name', 'root');
+        $rootName = env('ROOT_NAME', 'root');
+        $rootEmail = env('ROOT_EMAIL', 'admin@admin.com');
+        $rootPassword = env('ROOT_PASSWORD', 'secret');
+        $user = $this->user->findBy('name', $rootName);
         if (!$user) {
             $user = $this->user->create([
-                'name' => 'root',
-                'email' => 'admin@admin.com',
-                'password' => bcrypt('secret'),
+                'name' => $rootEmail,
+                'email' => $rootEmail,
+                'password' => bcrypt($rootPassword),
                 'status' => 1
             ]);
             $role = $this->role->create([
