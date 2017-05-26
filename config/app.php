@@ -14,6 +14,10 @@ return [
 
     'name' => env('APP_NAME', 'Promise Admin'),
 
+
+    'author' =>env('APP_AUTHOR', 'crisenchou'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

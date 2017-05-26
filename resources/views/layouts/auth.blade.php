@@ -48,9 +48,8 @@
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
                             <span class="red">{{config('app.name')}}</span>
-                            <span class="white" id="id-text2">系统</span>
                         </h1>
-                        <h4 class="blue" id="id-company-text">&copy; crisenchou</h4>
+                        <h4 class="blue" id="id-company-text">&copy; {{config('app.author')}}</h4>
                     </div>
 
                     <div class="space-6"></div>
