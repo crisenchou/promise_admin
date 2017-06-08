@@ -18,9 +18,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('settings', 'HomeController@settings')->name('settings');
     Route::get('profile', 'HomeController@profile')->name('profile');
+    Route::post('profile', 'HomeController@saveProfile')->name('profile.save');
+    Route::post('profile/password', 'HomeController@changePassword')->name('password.change');
+
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('/', 'HomeController@index')->name('index');
-    
+
 
     Route::resource('user', 'Basic\UserController');
     Route::resource('menu', 'Basic\MenuController');
