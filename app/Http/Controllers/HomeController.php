@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = $this->user();
-        return view('home', ['user' => $user]);
+        return view('home.index', ['user' => $user]);
     }
 
     public function user()
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function settings()
     {
-        abort(500);
+        return view('home.settings');
     }
 
 }

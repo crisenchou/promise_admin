@@ -1,5 +1,12 @@
 @if(isset($menusTree) && count($menusTree))
     <ul class="nav nav-list">
+        <li class="hover">
+            <a href="{{url('/')}}">
+                <i class="menu-icon fa fa-tachometer"></i>
+                <span class="menu-text"> 控制台 </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
         @foreach($menusTree as $menu)
             <li @if($menu->active) class="active" @endif>
                 @if(count($menu->subMenu))
@@ -14,22 +21,12 @@
                     @if(count($menu->subMenu))
                         <ul class="submenu">
                             @foreach($menu->subMenu as $submenu)
-                                @if(count($submenu->subMenu))
-                                    <li>
-                                        <a href="{{url($submenu->url)}}" class="dropdown-toggle">
-                                            <i class="menu-icon fa {{$submenu->icon or 'fa-tachometer'}}"></i>
-                                            <span class="menu-text">	{{$submenu->name}}</span>
-                                            <b class="arrow fa fa-angle-down"></b>
-                                        </a>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a href="{{$submenu->url}}" target="{{$submenu->target}}">
-                                            <i class="menu-icon fa {{$submenu->icon or 'fa-tachometer'}}"></i>
-                                            <span class="menu-text">	{{$submenu->name}}</span>
-                                        </a>
-                                    </li>
-                                @endif
+                                <li>
+                                    <a href="{{url($submenu->url)}}" target="{{$submenu->target}}">
+                                        <i class="menu-icon fa {{$submenu->icon or 'fa-tachometer'}}"></i>
+                                        <span class="menu-text">	{{$submenu->name}}</span>
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     @endif

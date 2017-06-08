@@ -24,10 +24,10 @@ class RootSeeder extends Seeder
         $rootName = env('ROOT_NAME', 'root');
         $rootEmail = env('ROOT_EMAIL', 'admin@admin.com');
         $rootPassword = env('ROOT_PASSWORD', 'secret');
-        $user = $this->user->findBy('name', $rootName);
+        $user = $this->user->findBy('email', $rootEmail);
         if (!$user) {
             $user = $this->user->create([
-                'name' => $rootEmail,
+                'name' => $rootName,
                 'email' => $rootEmail,
                 'password' => bcrypt($rootPassword),
                 'status' => 1
