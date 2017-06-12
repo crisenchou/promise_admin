@@ -36,23 +36,22 @@
                                     <h4 class="header blue bolder smaller">基本信息</h4>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-8">
-
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label no-padding-right"
-                                                       for="name">姓名</label>
+                                                       for="form-field-username">昵称</label>
                                                 <div class="col-sm-8">
-                                                    <input class="input-small" name="name" type="text" id="name"
-                                                           placeholder="姓名" value="{{$userInfo->name or ''}}"/>
+                                                    <input name="nickname" type="text"
+                                                           id="form-field-username" placeholder="昵称"
+                                                           value="{{$userInfo->nickname or ''}}"/>
                                                 </div>
                                             </div>
                                             <div class="space-4"></div>
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label no-padding-right"
-                                                       for="form-field-username">昵称</label>
+                                                       for="age">年龄</label>
                                                 <div class="col-sm-8">
-                                                    <input class="col-xs-12 col-sm-10" name="nickname" type="text"
-                                                           id="form-field-username" placeholder="昵称"
-                                                           value="{{$userInfo->nickname or ''}}"/>
+                                                    <input name="age" type="text" id="name"
+                                                           placeholder="年龄" value="{{$userInfo->age or ''}}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,7 +66,8 @@
                                                 <div class="input-group">
                                                     <input class="input-medium date-picker"
                                                            type="text" name="birthday" data-date-format="yyyy-mm-dd"
-                                                           placeholder="yyyy-mm-dd" value="{{$userInfo->birthday or ''}}"/>
+                                                           placeholder="yyyy-mm-dd"
+                                                           value="{{$userInfo->birthday or ''}}"/>
                                                     <span class="input-group-addon">
                                                         <i class="ace-icon fa fa-calendar"></i>
                                                     </span>
@@ -83,13 +83,15 @@
 
                                         <div class="col-sm-9">
                                             <label class="inline">
-                                                <input name="gender" type="radio" class="ace" value="1"/>
+                                                <input name="gender" type="radio" class="ace" value="1"
+                                                       @if($userInfo->gender ==1) checked @endif/>
                                                 <span class="lbl middle"> 男</span>
                                             </label>
 
                                             &nbsp; &nbsp; &nbsp;
                                             <label class="inline">
-                                                <input name="gender" type="radio" class="ace" value="0"/>
+                                                <input name="gender" type="radio" class="ace" value="0"
+                                                       @if($userInfo->gender ==0) checked @endif/>
                                                 <span class="lbl middle"> 女</span>
                                             </label>
                                         </div>
@@ -108,62 +110,64 @@
                                     </div>
 
                                     <div class="space"></div>
-                                    <h4 class="header blue bolder smaller">联系方式</h4>
+                                    {{--<h4 class="header blue bolder smaller">联系方式</h4>--}}
 
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label no-padding-right"
-                                               for="form-field-email">github</label>
-                                        <div class="col-sm-9">
-                                            <span class="input-icon input-icon-right">
-                                                <input type="url" name="github" value=""/>
-                                                <i class="ace-icon fa fa-envelope"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {{--<div class="form-group">--}}
+                                    {{--<label class="col-sm-3 control-label no-padding-right"--}}
+                                    {{--for="form-field-email">github</label>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                    {{--<span class="input-icon input-icon-right">--}}
+                                    {{--<input type="url" name="github" value=""/>--}}
+                                    {{--<i class="ace-icon fa fa-envelope"></i>--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
 
-                                    <div class="space-4"></div>
+                                    {{--<div class="space-4"></div>--}}
 
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label no-padding-right"
-                                               for="form-field-website">个人主页</label>
-                                        <div class="col-sm-9">
-                                            <span class="input-icon input-icon-right">
-                                                <input type="url" name="homepage" id="form-field-website"
-                                                       value=""/>
-                                                <i class="ace-icon fa fa-globe"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {{--<div class="form-group">--}}
+                                    {{--<label class="col-sm-3 control-label no-padding-right"--}}
+                                    {{--for="form-field-website">个人主页</label>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                    {{--<span class="input-icon input-icon-right">--}}
+                                    {{--<input type="url" name="homepage" id="form-field-website"--}}
+                                    {{--value=""/>--}}
+                                    {{--<i class="ace-icon fa fa-globe"></i>--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
 
-                                    <div class="space-4"></div>
+                                    {{--<div class="space-4"></div>--}}
 
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label no-padding-right"
-                                               for="form-field-phone">手机</label>
+                                    {{--<div class="form-group">--}}
+                                    {{--<label class="col-sm-3 control-label no-padding-right"--}}
+                                    {{--for="form-field-phone">手机</label>--}}
 
-                                        <div class="col-sm-9">
-                                            <span class="input-icon input-icon-right">
-                                                <input class="input-medium input-mask-phone"
-                                                       type="text" name="phone" id="form-field-phone"/>
-                                                <i class="ace-icon fa fa-phone fa-flip-horizontal"></i>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    {{--<div class="col-sm-9">--}}
+                                    {{--<span class="input-icon input-icon-right">--}}
+                                    {{--<input class="input-medium input-mask-phone"--}}
+                                    {{--type="text" name="phone" id="form-field-phone"/>--}}
+                                    {{--<i class="ace-icon fa fa-phone fa-flip-horizontal"></i>--}}
+                                    {{--</span>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
 
-                                    <div class="clearfix form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-info" type="submit">
-                                                <i class="ace-icon fa fa-check bigger-110"></i>
-                                                Save
-                                            </button>
+                                    {{Form::bsButton()}}
 
-                                            &nbsp; &nbsp;
-                                            <button class="btn" type="reset">
-                                                <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                Reset
-                                            </button>
-                                        </div>
-                                    </div>
+                                    {{--<div class="clearfix form-actions">--}}
+                                    {{--<div class="col-md-offset-3 col-md-9">--}}
+                                    {{--<button class="btn btn-info" type="submit">--}}
+                                    {{--<i class="ace-icon fa fa-check bigger-110"></i>--}}
+                                    {{--Save--}}
+                                    {{--</button>--}}
+
+                                    {{--&nbsp; &nbsp;--}}
+                                    {{--<button class="btn" type="reset">--}}
+                                    {{--<i class="ace-icon fa fa-undo bigger-110"></i>--}}
+                                    {{--Reset--}}
+                                    {{--</button>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
                                 </form>
                             </div>
 
@@ -188,20 +192,7 @@
                                             <input type="password" id="form-field-pass2" name="password_conformation"/>
                                         </div>
                                     </div>
-                                    <div class="clearfix form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-info" type="submit">
-                                                <i class="ace-icon fa fa-check bigger-110"></i>
-                                                Save
-                                            </button>
-
-                                            &nbsp; &nbsp;
-                                            <button class="btn" type="reset">
-                                                <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                Reset
-                                            </button>
-                                        </div>
-                                    </div>
+                                    {{Form::bsButton()}}
                                 </form>
                             </div>
                         </div>

@@ -11,6 +11,7 @@
                     </h4>
                     <div class="space-6"></div>
                     @include('message.validate')
+                    @include('message.message')
                     <form method="post">
                         {{csrf_field()}}
                         <fieldset>
