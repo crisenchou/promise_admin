@@ -18,24 +18,16 @@ class RoleController extends AbstractBasicController
         $this->role = $role;
     }
 
-    protected function fields()
-    {
-        return [
-            'name' => 'bsText',
-            'description' => 'bsText'
-        ];
-    }
-
     public function index()
     {
         $list = $this->role->all();
-        return $this->view('common.index', ['list' => $list]);
+        return $this->view('basic.role.index', ['list' => $list]);
     }
 
 
     public function create()
     {
-        return $this->view('common.create');
+        return $this->view('basic.role.create');
     }
 
 
@@ -52,14 +44,14 @@ class RoleController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->role->find($id);
-        return $this->view('common.show', ['model' => $model]);
+        return $this->view('basic.role.show', ['model' => $model]);
     }
 
 
     public function edit($id)
     {
         $model = $this->role->find($id);
-        return $this->view('common.edit', ['model' => $model]);
+        return $this->view('basic.role.edit', ['model' => $model]);
     }
 
     public function update(RoleRequest $request, $id)

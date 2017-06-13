@@ -14,15 +14,7 @@ class PermissionController extends AbstractBasicController
 
     public function __construct(PermissionRepository $permission)
     {
-        $this->permission = $permission;
-    }
-
-    public function fields()
-    {
-        return [
-            'name' => 'bsText',
-            'description' => 'bsText',
-        ];
+        $this->model = $permission;
     }
 
 
@@ -31,8 +23,8 @@ class PermissionController extends AbstractBasicController
      */
     public function index()
     {
-        $list = $this->permission->all();
-        return $this->view('common.index', ['list' => $list]);
+        $list = $this->model->all();
+        return $this->view('basic.permission.index', ['list' => $list]);
     }
 
     /**
@@ -40,13 +32,13 @@ class PermissionController extends AbstractBasicController
      */
     public function create()
     {
-        return $this->view('common.create');
+        return $this->view('basic.permission.create');
     }
 
     public function store(PermissionRequest $request)
     {
 
-        if ($this->permission->create($request->except('_token'))) {
+        if ($this->model->create($request->except('_token'))) {
             return $this->success();
         } else {
             return $this->error();
@@ -55,21 +47,21 @@ class PermissionController extends AbstractBasicController
 
     public function show($id)
     {
-        $model = $this->permission->find($id);
-        return $this->view('common.show', ['model' => $model]);
+        $model = $this->model->find($id);
+        return $this->view('basic.permission.show', ['model' => $model]);
     }
 
 
     public function edit($id)
     {
-        $model = $this->permission->find($id);
-        return $this->view('common.edit', ['model' => $model]);
+        $model = $this->model->find($id);
+        return $this->view('basic.permission.edit', ['model' => $model]);
     }
 
 
     public function update(PermissionRequest $request, $id)
     {
-        $model = $this->permission->find($id);
+        $model = $this->model->find($id);
 
         if ($model->update($request->except('_token'))) {
             return $this->success();
@@ -80,7 +72,7 @@ class PermissionController extends AbstractBasicController
 
     public function destroy($id)
     {
-        $model = $this->permission->find($id);
+        $model = $this->model->find($id);
         if ($model->delete()) {
             return $this->success();
         }
