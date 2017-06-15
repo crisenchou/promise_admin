@@ -10,6 +10,7 @@
         </h1>
     </div><!-- /.page-header -->
 
+    @include('components.message.validate')
     <div class="row">
         <div class="col-xs-6">
             {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}

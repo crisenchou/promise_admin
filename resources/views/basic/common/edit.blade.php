@@ -8,6 +8,7 @@
             </small>
         </h1>
     </div><!-- /.page-header -->
+    @include('components.message.validate')
     <div class="row">
         <div class="col-xs-6">
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal','files' => $upload]) !!}

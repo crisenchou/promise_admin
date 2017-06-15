@@ -24,7 +24,16 @@ class PermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '权限标志不能为空',
+            'description.required' => '描述不能为空',
         ];
     }
 }

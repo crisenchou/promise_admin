@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Basic;
 
+use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
+
 
 class UserController extends AbstractBasicController
 {
@@ -26,27 +28,6 @@ class UserController extends AbstractBasicController
         parent::init();
     }
 
-
-    public function store(UserRequest $request)
-    {
-        $user = $this->user->create($request->except('_token'));
-        if ($user) {
-            $user->roles()->attach($request->get('role_id'));
-            return $this->success();
-        }
-        return $this->error();
-    }
-
-    public function update(UserRequest $request, $id)
-    {
-        $user = $this->user->find($id);
-        if ($user->update($request->except('_token'))) {
-            $user->roles()->detach();
-            $user->roles()->attach($request->get('role_id'));
-            return $this->success();
-        }
-        return $this->error();
-    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -99,5 +80,39 @@ class UserController extends AbstractBasicController
         }
         return $this->error();
     }
+
+    public function store(UserRequest $request)
+    {
+        $fillData = $this->encryptPassword($request->except('_token'));
+        $user = $this->user->create($fillData);
+        if ($user) {
+            $user->roles()->attach($request->get('role_id'));
+            return $this->success();
+        }
+        return $this->error();
+    }
+
+    //处理密码
+    private function encryptPassword($fillData)
+    {
+        if (!empty($fillData['password'])) {
+            $fillData['password'] = bcrypt($fillData['password']);
+        }
+        return $fillData;
+    }
+
+
+    public function update(UserEditRequest $request, $id)
+    {
+        $user = $this->user->find($id);
+        $fillData = $this->encryptPassword($request->except('_token'));
+        if ($user->update($fillData)) {
+            $user->roles()->detach();
+            $user->roles()->attach($request->get('role_id'));
+            return $this->success();
+        }
+        return $this->error();
+    }
+
 
 }

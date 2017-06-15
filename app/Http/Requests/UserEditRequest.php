@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleRequest extends FormRequest
+class UserEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,16 @@ class RoleRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
+            'email' => 'required|email',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => '角色名称不能为空',
-            'description.required' => '描述不能为空',
+            'name.required' => '用户名称不能为空',
+            'email.required' => '用户邮箱不能为空',
+            'email.email' => '用户邮箱格式不正确',
         ];
     }
 }

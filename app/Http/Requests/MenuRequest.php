@@ -24,7 +24,14 @@ class MenuRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '请为菜单命名',
         ];
     }
 }

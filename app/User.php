@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'status'
     ];
 
 
@@ -42,16 +42,38 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
-    public function userInfo()
-    {
-        return $this->hasOne(UserInfo::class);
-    }
 
     public function hasRole($role)
     {
-        $roles = $this->roles;
-        return $roles->contains($role);
+        $role = $this->getArrayFrom($role);
+        if (is_array($role)) {
+            foreach ($role as $item) {
+                if ($this->isRole($item)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return $this->isRole($role);
+        }
     }
+
+
+
+    public function isRole($role)
+    {
+        $roles = $this->roles;
+        return $roles->contains(function ($value, $key) use ($role) {
+            return $value->id == $role || $value->name == $role;
+        });
+    }
+
+
+    private function getArrayFrom($argument)
+    {
+        return (!is_array($argument)) ? preg_split('/ ?[,|] ?/', $argument) : $argument;
+    }
+
 
     public function hasPermission($permission)
     {
@@ -64,12 +86,13 @@ class User extends Authenticatable
         return false;
     }
 
-    public function getStatusAttribute($status)
+    public function getHumanStatusAttribute()
     {
+        $status = $this->getOriginal('status');
         $statusArr = [
             -1 => '禁用',
             0 => '未激活',
-            1 => '激活'
+            1 => '正常'
         ];
         return $statusArr[$status];
     }

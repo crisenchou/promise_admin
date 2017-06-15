@@ -5,10 +5,11 @@
             用户管理
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                <a href="{{route('user.create')}}">新建</a>
+                <a href="{{route($route.'.create')}}">新建</a>
             </small>
         </h1>
     </div><!-- /.page-header -->
+
 
     <div class="row">
         <div class="col-xs-12">
@@ -45,14 +46,14 @@
                                 </td>
                                 <td>{{$user->name}}</td>
                                 <td class="hidden-480">{{$user->created_at}}</td>
-                                <td><span class="label label-sm label-warning">{{$user->status}}</span></td>
+                                <td><span class="label label-sm label-warning">{{$user->humanStatus}}</span></td>
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
                                         <!--<button class="btn btn-xs btn-success">
                                             <i class="ace-icon fa fa-check bigger-120"></i>
                                         </button>-->
 
-                                        <a href="{{url('user/'.$user->id.'/edit')}}" class="btn btn-xs btn-info">
+                                        <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 

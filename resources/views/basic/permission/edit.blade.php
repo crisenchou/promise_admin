@@ -10,6 +10,7 @@
         </h1>
     </div><!-- /.page-header -->
 
+    @include('components.message.validate')
     <div class="row">
         <div class="col-xs-12">
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}

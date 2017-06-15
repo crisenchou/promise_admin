@@ -24,7 +24,19 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '用户名称不能为空',
+            'email.required' => '用户邮箱不能为空',
+            'email.email' => '用户邮箱格式不正确',
+            'password.required' => '密码不能为空'
         ];
     }
 }

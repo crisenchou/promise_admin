@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use App\Role;
 
 class VerifyRole
 {
@@ -27,13 +26,8 @@ class VerifyRole
      */
     public function handle($request, Closure $next, $role = null)
     {
-        if ($this->auth->check()) {
-            $user = $this->auth->user();
-            $role = Role::whereName($role)->first();
-            if ($user->hasRole($role)) {
-                return $next($request);
-            }
-
+        if ($this->auth->check() && $this->auth->user()->hasRole($role)) {
+            return $next($request);
         }
         return back();
     }
