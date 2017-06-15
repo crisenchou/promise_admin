@@ -34,7 +34,7 @@
 </head>
 <body class="no-skin">
 @section('navbar')
-    @include('widget.navbar')
+    @include('components.widget.navbar')
 @show
 <div class="main-container ace-save-state" id="main-container">
     <script type="text/javascript">
@@ -44,22 +44,22 @@
         }
     </script>
     @section('sidebar')
-        @include('widget.sidebar')
+        @include('components.widget.sidebar')
     @show
     <div class="main-content">
         <div class="main-content-inner">
             @section('breadcrumbs')
-                @include('widget.breadcrumbs')
+                @include('components.widget.breadcrumbs')
             @show
             <div class="page-content">
-                @include('message.message')
-                @include('widget.settings')
+                @include('components.message.message')
+                @include('components.widget.settings')
                 @yield('page-content')
             </div><!-- /.page-content -->
         </div>
     </div><!-- /.main-content -->
-    @include('widget.footer')
-    @include('widget.scroll-up')
+    @include('components.widget.footer')
+    @include('components.widget.scroll-up')
 </div><!-- /.main-container -->
 <!-- basic scripts -->
 <!--[if !IE]> -->

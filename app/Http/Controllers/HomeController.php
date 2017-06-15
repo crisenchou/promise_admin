@@ -10,11 +10,10 @@ use Auth;
 class HomeController extends AdminController
 {
 
-    public $transactionModel;
 
-    public function __construct(TransactionRepository $transaction)
+    public function __construct()
     {
-        $this->transactionModel = $transaction;
+
     }
 
     /**
@@ -25,10 +24,7 @@ class HomeController extends AdminController
     public function index()
     {
         $user = $this->user();
-        $todayProfit = $this->transactionModel->getTodayProfit();
-        $yesterdayProfit = $this->transactionModel->getYesterdayProfit();
-        $totalProfit = $this->transactionModel->getTotalProfit();
-        return view('home.index', compact('user', 'todayProfit', 'yesterdayProfit', 'totalProfit'));
+        return view('home.index', compact('user'));
     }
 
     protected function user()

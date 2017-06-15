@@ -68,19 +68,6 @@ class UserController extends AbstractBasicController
     }
 
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
-    {
-        $user = $this->user->find($id);
-        if ($user->delete()) {
-            return $this->success();
-        }
-        return $this->error();
-    }
-
     public function store(UserRequest $request)
     {
         $fillData = $this->encryptPassword($request->except('_token'));
@@ -109,6 +96,20 @@ class UserController extends AbstractBasicController
         if ($user->update($fillData)) {
             $user->roles()->detach();
             $user->roles()->attach($request->get('role_id'));
+            return $this->success();
+        }
+        return $this->error();
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $user = $this->user->find($id);
+        if ($user->delete()) {
             return $this->success();
         }
         return $this->error();

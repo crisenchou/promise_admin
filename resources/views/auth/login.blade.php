@@ -10,8 +10,8 @@
                         登录
                     </h4>
                     <div class="space-6"></div>
-                    @include('message.validate')
-                    @include('message.message')
+                    @include('components.message.validate')
+                    @include('components.message.message')
                     <form method="post">
                         {{csrf_field()}}
                         <fieldset>

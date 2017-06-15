@@ -10,7 +10,7 @@
                         重置密码
                     </h4>
                     <div class="space-6"></div>
-                    @include('message.validate')
+                    @include('components.message.validate')
                     <form method="post" action="{{route('password.request')}}">
                         {{csrf_field()}}
                         <input type="hidden" name="token" value="{{ $token }}">

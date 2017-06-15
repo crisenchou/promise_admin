@@ -17,7 +17,7 @@
             {{method_field('put')}}
             {{ Form::bsText('name', '用户名称',$model->name )}}
             {{ Form::bsText('email', '邮箱',$model->email )}}
-            {{ Form::bsSelectMuliple('role_id', '角色','',$roles )}}
+            {{ Form::bsSelectMuliple('role_id', '角色',$model->roles->first()->id,$roles )}}
             {{ Form::bsRadio('status', '用户状态' ,$model->status ,[0=>'未激活',1=>'正常'])}}
             {{ Form::bsButton() }}
             {!! Form::close() !!}
