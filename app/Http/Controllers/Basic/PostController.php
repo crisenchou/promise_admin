@@ -40,7 +40,7 @@ class PostController extends AbstractBasicController
     public function index()
     {
         $list = $this->post->all();
-        return $this->view('common.index', ['list' => $list]);
+        return $this->view('basic.common.index', ['list' => $list]);
     }
 
     /**
@@ -75,7 +75,7 @@ class PostController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->post->find($id);
-        return $this->view('common.show', ['model' => $model]);
+        return $this->view('basic.common.show', ['model' => $model]);
     }
 
     /**
@@ -85,7 +85,7 @@ class PostController extends AbstractBasicController
     public function edit($id)
     {
         $model = $this->post->find($id);
-        return $this->view('common.edit', ['model' => $model]);
+        return $this->view('basic.common.edit', ['model' => $model]);
     }
 
     public function update(PostRequest $request, $id)
