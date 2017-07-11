@@ -42,7 +42,7 @@
                                         </a>
 
                                         <button class="btn btn-xs btn-danger"
-                                                data-action="{{route($route.'.delete',$item->id)}}" data-toggle="modal"
+                                                data-action="{{route($route.'.destroy',$item->id)}}" data-toggle="modal"
                                                 data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
