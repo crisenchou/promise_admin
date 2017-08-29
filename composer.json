@@ -1,6 +1,6 @@
 {
   "name": "crisen/promise",
-  "description": "laravel5.4+ace模版写成的rabc后台管理系统",
+  "description": "laravel+ace模版写成的rabc后台管理系统",
   "keywords": [
     "cms后台",
     "后台管理系统"
@@ -16,7 +16,7 @@
     "guzzlehttp/guzzle": "^6.2",
     "laravel/dusk": "^1.0",
     "laravel/envoy": "~1.0",
-    "laravel/framework": "5.4.*",
+    "laravel/framework": "5.5.*",
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "^5.3.0",
     "maatwebsite/excel": "~2.1.0",
@@ -26,7 +26,7 @@
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~5.7"
+    "phpunit/phpunit": "~6.0"
   },
   "autoload": {
     "classmap": [
