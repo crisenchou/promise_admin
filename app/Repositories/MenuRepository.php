@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Menu;
-use Bosnadev\Repositories\Eloquent\Repository;
+use Crisen\Repositories\Eloquent\Repository;
 
 class MenuRepository extends Repository
 {

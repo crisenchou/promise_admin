@@ -1,7 +1,7 @@
 <?php namespace App\Repositories\Criteria;
 
-use Bosnadev\Repositories\Criteria\Criteria;
-use Bosnadev\Repositories\Contracts\RepositoryInterface as Repository;
+use Crisen\Repositories\Criteria\Criteria;
+use Crisen\Repositories\Contracts\RepositoryInterface as Repository;
 
 /**
  * Class MainMenu

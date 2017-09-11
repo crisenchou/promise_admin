@@ -1,7 +1,7 @@
 <?php namespace App\Repositories;
 
-use Bosnadev\Repositories\Contracts\RepositoryInterface;
-use Bosnadev\Repositories\Eloquent\Repository;
+use Crisen\Repositories\Contracts\RepositoryInterface;
+use Crisen\Repositories\Eloquent\Repository;
 
 /**
  * Class PostRepository

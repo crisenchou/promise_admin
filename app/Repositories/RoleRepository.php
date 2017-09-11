@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Role;
-use Bosnadev\Repositories\Eloquent\Repository;
+use Crisen\Repositories\Eloquent\Repository;
 
 class RoleRepository extends Repository
 {

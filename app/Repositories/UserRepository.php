@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\User;
-use Bosnadev\Repositories\Eloquent\Repository;
+use Crisen\Repositories\Eloquent\Repository;
 
 class UserRepository extends Repository
 {
