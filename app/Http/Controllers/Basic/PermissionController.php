@@ -24,7 +24,7 @@ class PermissionController extends AbstractBasicController
     public function index()
     {
         $list = $this->model->all();
-        return $this->view('basic.permission.index', ['list' => $list]);
+        return $this->view('basic.permission.index', compact('list'));
     }
 
     /**
@@ -48,14 +48,14 @@ class PermissionController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->model->find($id);
-        return $this->view('basic.permission.show', ['model' => $model]);
+        return $this->view('basic.permission.show', compact('model'));
     }
 
 
     public function edit($id)
     {
         $model = $this->model->find($id);
-        return $this->view('basic.permission.edit', ['model' => $model]);
+        return $this->view('basic.permission.edit', compact('model'));
     }
 
 
