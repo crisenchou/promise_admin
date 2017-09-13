@@ -35,7 +35,7 @@ class UserController extends AbstractBasicController
     public function index()
     {
         $list = $this->user->all();
-        return $this->view('basic.user.index', ['list' => $list]);
+        return $this->view('basic.user.index', compact('list'));
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->user->find($id);
-        return $this->view('basic.user.show', ['model' => $model]);
+        return $this->view('basic.user.show', compact('model'));
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends AbstractBasicController
     public function edit($id)
     {
         $model = $this->user->find($id);
-        return $this->view('basic.user.edit', ['model' => $model]);
+        return $this->view('basic.user.edit', compact('model'));
     }
 
 

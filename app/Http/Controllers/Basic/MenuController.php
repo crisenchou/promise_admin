@@ -25,7 +25,7 @@ class MenuController extends AbstractBasicController
     public function index()
     {
         $list = $this->menu->findAllBy('parent_id', 0);
-        return $this->view('basic.menu.index', ['list' => $list]);
+        return $this->view('basic.menu.index', compact('list'));
     }
 
     public function create()
@@ -49,7 +49,7 @@ class MenuController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->menu->find($id);
-        return $this->view('basic.menu.show', ['model' => $model]);
+        return $this->view('basic.menu.show', compact('model'));
     }
 
 
