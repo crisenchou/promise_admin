@@ -16,7 +16,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('settings', 'HomeController@settings')->name('settings');
+    Route::get('settings', 'HomeController@settings')->name('settings')->middleware('captcha');
     Route::get('profile', 'HomeController@profile')->name('profile');
     Route::post('profile', 'HomeController@saveProfile')->name('profile.save');
     Route::post('profile/password', 'HomeController@changePassword')->name('password.change');
