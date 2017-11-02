@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RouteTest extends TestCase
 {
-    
+
     public function testHome()
     {
         $response = $this->get('/');
