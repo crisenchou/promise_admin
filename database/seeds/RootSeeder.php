@@ -32,13 +32,10 @@ class RootSeeder extends Seeder
                 'password' => bcrypt($rootPassword),
                 'status' => 1
             ]);
-            $role = $this->role->create([
-                'name' => 'root',
-                'description' => '超级管理员',
-            ]);
-            $user->roles()->attach($role);
+            $user->roles()->attach('root');
         } else {
             dump('root exists');
         }
     }
+
 }
