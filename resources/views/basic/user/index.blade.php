@@ -53,50 +53,14 @@
                                             <i class="ace-icon fa fa-check bigger-120"></i>
                                         </button>-->
 
-                                        <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-xs btn-info">
+                                        <a href="{{route($route.'.edit',['id'=>$user->id])}}" class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 
-                                        <button class="btn btn-xs btn-danger" data-action="{{route('user.destroy',$user->id)}}" data-toggle="modal"
+                                        <button class="btn btn-xs btn-danger" data-action="{{route($route.'.destroy',$user->id)}}" data-toggle="modal"
                                                 data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
-
-                                        <!--<button class="btn btn-xs btn-warning">
-                                            <i class="ace-icon fa fa-flag bigger-120">删除</i>
-                                        </button>-->
-                                    </div>
-
-                                    <div class="hidden-md hidden-lg">
-                                        <div class="inline pos-rel">
-                                            <button class="btn btn-minier btn-primary dropdown-toggle"
-                                                    data-toggle="dropdown" data-position="auto">
-                                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                <li>
-                                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                                        <span class="blue">
-                                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                        <span class="green">
-                                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                        <span class="red">
-                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </td>
                             </tr>

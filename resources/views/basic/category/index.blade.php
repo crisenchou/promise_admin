@@ -24,7 +24,7 @@
                                     <div class="dd-handle">
                                         {{$cate->name}}
                                         <div class="pull-right action-buttons">
-                                            <a class="blue" href="{{route('cate.edit',['id'=>$cate->id])}}">
+                                            <a class="blue" href="{{route($route.'.edit',['id'=>$cate->id])}}">
                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                             </a>
                                             <a class="red" href="#"
@@ -43,12 +43,12 @@
                                                         {{$subCate->name}}
                                                         <div class="pull-right action-buttons">
                                                             <a class="blue"
-                                                               href="{{route('cate.edit',['id'=>$subCate->id])}}">
+                                                               href="{{route($route.'.edit',['id'=>$subCate->id])}}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
 
                                                             <a class="red" href="#"
-                                                               data-action="{{route('cate.destroy',['id'=>$subCate->id])}}"
+                                                               data-action="{{route($route.'.destroy',['id'=>$subCate->id])}}"
                                                                data-toggle="modal"
                                                                data-target="#deleteModal">
                                                                 <i class="ace-icon fa fa-trash-o bigger-130"></i>
