@@ -38,7 +38,7 @@
                                                         {{$submenu->name}}
                                                         <div class="pull-right action-buttons">
                                                             <a class="blue"
-                                                               href="{{route('menu.edit',['id'=>$submenu->id])}}">
+                                                               href="{{route($route.'.edit',['id'=>$submenu->id])}}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
                                                             <a class="red" href="#">

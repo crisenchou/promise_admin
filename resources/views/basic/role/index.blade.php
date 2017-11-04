@@ -46,11 +46,11 @@
                                 <td class="hidden-480">{{$model->created_at}}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{route('role.edit',['id'=>$model->id])}}" class="btn btn-xs btn-info">
+                                        <a href="{{route($route.'.edit',['id'=>$model->id])}}" class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 
-                                        <button class="btn btn-xs btn-danger" data-action="{{route('role.destroy',$model->id)}}" data-toggle="modal"
+                                        <button class="btn btn-xs btn-danger" data-action="{{route($route.'.destroy',$model->id)}}" data-toggle="modal"
                                                 data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
