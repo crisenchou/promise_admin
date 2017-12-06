@@ -4,7 +4,8 @@ return [
     1 => [
         'id' => 1,
         'parent_id' => 0,
-        'name' => '基础',
+        'module_id' => 1,
+        'name' => '系统',
         'url' => '#',
         'icon' => 'fa-desktop',
         'target' => '_self',
@@ -13,7 +14,8 @@ return [
     2 => [
         'id' => 2,
         'parent_id' => 1,
-        'name' => '用户管理',
+        'module_id' => 1,
+        'name' => '用户',
         'url' => 'user',
         'icon' => 'fa-users',
         'target' => '_self',
@@ -22,7 +24,8 @@ return [
     3 => [
         'id' => 3,
         'parent_id' => 1,
-        'name' => '角色管理',
+        'module_id' => 1,
+        'name' => '角色',
         'url' => 'role',
         'icon' => 'fa-users',
         'target' => '_self',
@@ -31,17 +34,59 @@ return [
     4 => [
         'id' => 4,
         'parent_id' => 1,
-        'name' => '权限管理',
-        'url' => 'permission',
-        'icon' => 'fa-pencil-square-o',
+        'module_id' => 1,
+        'name' => '模块',
+        'url' => 'module',
+        'icon' => 'fa-users',
         'target' => '_self',
         'status' => 1
     ],
     5 => [
         'id' => 5,
         'parent_id' => 1,
-        'name' => '菜单管理',
+        'module_id' => 1,
+        'name' => '权限',
+        'url' => 'permission',
+        'icon' => 'fa-pencil-square-o',
+        'target' => '_self',
+        'status' => 1
+    ],
+    6 => [
+        'id' => 6,
+        'parent_id' => 1,
+        'module_id' => 1,
+        'name' => '菜单',
         'url' => 'menu',
+        'icon' => 'fa-list',
+        'target' => '_self',
+        'status' => 1
+    ],
+    7 => [
+        'id' => 7,
+        'parent_id' => 0,
+        'module_id' => 2,
+        'name' => '基础',
+        'url' => '#',
+        'icon' => 'fa-list',
+        'target' => '_self',
+        'status' => 1
+    ],
+    8 => [
+        'id' => 8,
+        'parent_id' => 7,
+        'module_id' => 2,
+        'name' => '分类',
+        'url' => '#',
+        'icon' => 'fa-list',
+        'target' => '_self',
+        'status' => 1
+    ],
+    9 => [
+        'id' => 9,
+        'parent_id' => 7,
+        'module_id' => 2,
+        'name' => '文章',
+        'url' => '#',
         'icon' => 'fa-list',
         'target' => '_self',
         'status' => 1
