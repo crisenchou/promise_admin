@@ -27,12 +27,12 @@
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
+                        <!--<li>
                             <a href="{{route('settings')}}">
                                 <i class="ace-icon fa fa-cog"></i>
                                 设置
                             </a>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="{{route('profile')}}">
                                 <i class="ace-icon fa fa-user"></i>

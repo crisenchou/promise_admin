@@ -15,7 +15,7 @@ return [
     'name' => env('APP_NAME', 'Promise Admin'),
 
 
-    'author' =>env('APP_AUTHOR', 'crisenchou'),
+    'author' => env('APP_AUTHOR', 'crisenchou'),
 
 
     /*
@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Shanghai',
+    'timezone' =>  'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------

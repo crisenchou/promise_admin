@@ -16,9 +16,9 @@
                         <fieldset>
                             <label class="block clearfix">
                                 <span class="block input-icon input-icon-right">
-                                    <input type="text" name="name" class="form-control" placeholder="用户名"
+                                    <input type="text" name="name" class="form-control" placeholder="姓名"
                                            value="{{old('name')}}"/>
-                                    <i class="ace-icon fa fa-envelope"></i>
+                                    <i class="ace-icon fa fa-user"></i>
                                 </span>
                             </label>
                             <label class="block clearfix">

@@ -32,12 +32,14 @@ class HomeController extends AdminController
         return Auth::user();
     }
 
+
     public function profile()
     {
         $user = $this->user();
         $userInfo = UserInfo::where('user_id', $user->id)->first();
-        return view('home.profile', compact('userInfo'));
+        return view('home.profile.index', compact('userInfo'));
     }
+
 
     public function saveProfile(Request $request)
     {

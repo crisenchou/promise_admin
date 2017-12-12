@@ -31,28 +31,28 @@ return [
     ],
     'boolean' => ':attribute必须是布尔类型',
     'confirmed' => 'The :attribute confirmation does not match.',
-    'date' => 'The :attribute is not a valid date.',
-    'date_format' => 'The :attribute does not match the format :format.',
-    'different' => 'The :attribute and :other must be different.',
+    'date' => ':attribute 必须是完整的日期格式',
+    'date_format' => ':attribute格式不正确',
+    'different' => ':attribute不能和:other相同',
     'digits' => 'The :attribute must be :digits digits.',
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => ':attribute必须是邮箱格式',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'image' => 'The :attribute must be an image.',
-    'in' => 'The selected :attribute is invalid.',
+    'in' => ':attribute不正确',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer' => 'The :attribute must be an integer.',
     'ip' => 'The :attribute must be a valid IP address.',
     'json' => 'The :attribute must be a valid JSON string.',
     'max' => [
-        'numeric' => 'The :attribute不能超过:max.',
-        'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
-        'array' => 'The :attribute may not have more than :max items.',
+        'numeric' => ':attribute不能大于:max.',
+        'file' => ':attribute不能超过:max字节.',
+        'string' => ':attribute最长为:max个字母.',
+        'array' => ':attribute最多只能包含:max项.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
@@ -75,16 +75,16 @@ return [
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
     'same' => ':attribute和:other必须一致.',
     'size' => [
-        'numeric' => 'The :attribute必须是:size',
+        'numeric' => ':attribute必须是:size',
         'file' => ':attribute必须是:size字节.',
         'string' => ':attribute必须是:size个字母.',
         'array' => ':attribute必须是:size项',
     ],
     'string' => ':attribute必须是字符串',
-    'timezone' => 'The :attribute must be a valid zone.',
+    'timezone' => ':attribute不是正确的时区',
     'unique' => ':attribute已存在',
-    'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute format is invalid.',
+    'uploaded' => ':attribute上传失败',
+    'url' => 'attribute格式不正确',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +116,11 @@ return [
     */
 
     'attributes' => [
-   
+        'name' => '姓名',
+        'email' => '邮箱',
+        'password' => '密码',
+        'captcha' => '验证码',
+
     ],
 
 ];
