@@ -11,23 +11,37 @@
 |
 */
 
+//auth
 Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('settings', 'HomeController@settings')->name('settings')->middleware('captcha');
-    Route::get('profile', 'HomeController@profile')->name('profile');
-    Route::post('profile', 'HomeController@saveProfile')->name('profile.save');
-    Route::post('profile/password', 'HomeController@changePassword')->name('password.change');
+    //core
+    Route::resource('user', 'Core\UserController');
+    Route::resource('module', 'Core\ModuleController');
+    Route::resource('role', 'Core\RoleController');
+    Route::resource('permission', 'Core\PermissionController');
 
-    Route::get('home', 'HomeController@index')->name('home');
-    Route::get('/', 'HomeController@index')->name('index');
-
-
-    Route::resource('user', 'Basic\UserController');
+    
+    //basic
     Route::resource('menu', 'Basic\MenuController');
-    Route::resource('role', 'Basic\RoleController');
-    Route::resource('permission', 'Basic\PermissionController');
-    Route::resource('post', 'Basic\PostController');
+    Route::get('settings', 'Basic\SettingsController@index')->name('settings');
+
+
+    //common
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('home', 'HomeController@index')->name('home');
+
+    //content
+    Route::resource('category', 'Content\CategoryController');
+    Route::resource('post', 'Content\PostController');
+
+    //personal
+    Route::get('profile', 'ProfileController@profile')->name('profile');
+    Route::get('profile/edit', 'ProfileController@profile')->name('profile.edit');
+    Route::post('profile', 'ProfileController@saveProfile')->name('profile.save');
+    Route::post('profile/password', 'ProfileController@changePassword')->name('password.change');
+
+
 });

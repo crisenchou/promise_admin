@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return 'this is api';
-});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

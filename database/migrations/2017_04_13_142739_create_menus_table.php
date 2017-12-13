@@ -23,7 +23,6 @@ class CreateMenusTable extends Migration
             $table->string('target', 10)->nullable();
             $table->integer('sort')->default(0);
             $table->integer('status')->default(0);
-
             $table->timestamps();
         });
     }
