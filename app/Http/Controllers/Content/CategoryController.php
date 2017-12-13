@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Basic;
+namespace App\Http\Controllers\Content;
 
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Repositories\CategoryRepository;
 
-class CategoryController extends AbstractBasicController
+class CategoryController extends AbstractContentController
 {
     public $title = "分类管理";
     protected $category;

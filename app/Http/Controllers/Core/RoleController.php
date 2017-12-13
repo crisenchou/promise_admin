@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Basic;
+namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\RoleRepository;
 
-class RoleController extends AbstractBasicController
+class RoleController extends AbstractCoreController
 {
 
     protected $role;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Basic;
+namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\PermissionRequest;
 use App\Repositories\PermissionRepository;
 
-class PermissionController extends AbstractBasicController
+class PermissionController extends AbstractCoreController
 {
 
     protected $permission;

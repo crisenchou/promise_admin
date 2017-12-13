@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Basic;
+namespace App\Http\Controllers\Content;
 
 use App\Http\Requests\PostRequest;
 use App\Repositories\PostRepository;
-use Illuminate\Http\Request;
-use Auth;
 
-class PostController extends AbstractBasicController
+class PostController extends AbstractContentController
 {
 
     protected $post;
@@ -54,7 +52,6 @@ class PostController extends AbstractBasicController
     public function store(PostRequest $request)
     {
         $fill = $request->except(['_token', 'cover']);
-        $fill['user_id'] = Auth::id();
         if ($request->hasFile('cover')) {
             $path = $request->cover->store('images');
             $fill['cover'] = $path;

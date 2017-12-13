@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Basic;
+namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
@@ -8,7 +8,7 @@ use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 
 
-class UserController extends AbstractBasicController
+class UserController extends AbstractCoreController
 {
 
     protected $user;

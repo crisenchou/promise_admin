@@ -59,7 +59,6 @@ class User extends Authenticatable
     }
 
 
-
     public function isRole($role)
     {
         $roles = $this->roles;
@@ -89,12 +88,8 @@ class User extends Authenticatable
     public function getHumanStatusAttribute()
     {
         $status = $this->getOriginal('status');
-        $statusArr = [
-            -1 => '禁用',
-            0 => '未激活',
-            1 => '正常'
-        ];
-        return $statusArr[$status];
+        $statusArr = config('dictionary.status');
+        return array_get($statusArr, $status);
     }
 
 }

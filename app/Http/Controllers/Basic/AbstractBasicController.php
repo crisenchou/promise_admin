@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Basic;
 
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 use Route;
 
-abstract class AbstractBasicController extends AdminController
+abstract class AbstractBasicController extends Controller
 {
 
     protected $title;

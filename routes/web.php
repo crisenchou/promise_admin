@@ -17,25 +17,37 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
-    //core
-    Route::resource('user', 'Core\UserController');
-    Route::resource('module', 'Core\ModuleController');
-    Route::resource('role', 'Core\RoleController');
-    Route::resource('permission', 'Core\PermissionController');
+    Route::put('post/{id}', function ($id) {
+        //
+    })->middleware('role:editor');
 
-    
+    //core
+    Route::group(['middleware' => 'role:root'], function () {
+
+        Route::resource('user', 'Core\UserController');
+        Route::resource('module', 'Core\ModuleController');
+        Route::resource('role', 'Core\RoleController');
+        Route::resource('permission', 'Core\PermissionController');
+    });
+
     //basic
-    Route::resource('menu', 'Basic\MenuController');
-    Route::get('settings', 'Basic\SettingsController@index')->name('settings');
+    Route::group(['middleware' => 'role:root|admin'], function () {
+
+        Route::resource('menu', 'Basic\MenuController');
+        Route::get('settings', 'Basic\SettingsController@index')->name('settings');
+    });
+
+
+    Route::group(['middleware' => 'role:root|admin|editor'], function () {
+        //content
+        Route::resource('category', 'Content\CategoryController');
+        Route::resource('post', 'Content\PostController');
+    });
 
 
     //common
-    Route::get('/', 'HomeController@index')->name('index');
+    //  Route::get('/', 'HomeController@index')->name('index');
     Route::get('home', 'HomeController@index')->name('home');
-
-    //content
-    Route::resource('category', 'Content\CategoryController');
-    Route::resource('post', 'Content\PostController');
 
     //personal
     Route::get('profile', 'ProfileController@profile')->name('profile');
