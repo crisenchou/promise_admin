@@ -68,7 +68,7 @@ return [
         'id' => 8,
         'parent_id' => 7,
         'name' => '分类',
-        'url' => '#',
+        'url' => 'category',
         'icon' => 'fa-list',
         'target' => '_self',
         'status' => 1
@@ -77,7 +77,7 @@ return [
         'id' => 9,
         'parent_id' => 7,
         'name' => '文章',
-        'url' => '#',
+        'url' => 'post',
         'icon' => 'fa-list',
         'target' => '_self',
         'status' => 1
