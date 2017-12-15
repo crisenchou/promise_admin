@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Role;
 
-class RoleSeeder extends Seeder
+class ModuleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +11,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('roles')->truncate();
+        \DB::table('modules')->truncate();
         $roles = config('roles');
-        Role::insert($roles);
+        \App\Module::insert($roles);
     }
 }

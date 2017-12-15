@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Personal;
 
-use App\Repositories\TransactionRepository;
 use App\UserInfo;
 use Illuminate\Http\Request;
 use Auth;
 
-class HomeController extends AdminController
+class HomeController extends AbstractPersonalController
 {
 
 

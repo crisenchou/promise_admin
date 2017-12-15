@@ -10,8 +10,8 @@
 return [
     1 => [
         'id' => 1,
-        'name' => 'system',
-        'description' => '系统',
+        'name' => 'core',
+        'description' => '核心',
     ],
     2 => [
         'id' => 2,
@@ -20,8 +20,8 @@ return [
     ],
     3 => [
         'id' => 3,
-        'name' => 'service',
-        'description' => '服务',
+        'name' => 'personal',
+        'description' => '用户',
     ],
     4 => [
         'id' => 4,

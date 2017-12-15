@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Route;
 
 class Controller extends BaseController
 {
@@ -71,7 +71,7 @@ class Controller extends BaseController
      */
     protected function message($message = null, $url = null)
     {
-        return $this->redirect($url)->with(['message' => $message]);
+        return $this->redirect($url)->with(['message' => trans($message)]);
     }
 
 
@@ -79,7 +79,7 @@ class Controller extends BaseController
      * @param string $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function success($message = '保存成功')
+    protected function success($message = 'success')
     {
         return $this->message($message);
     }
@@ -88,7 +88,7 @@ class Controller extends BaseController
      * @param string $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function error($message = '保存失败')
+    protected function error($message = 'fail')
     {
         return $this->message($message);
     }

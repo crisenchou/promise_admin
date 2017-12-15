@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class AbstractCoreController extends Controller
 {
+
+    protected $model;
+
     /**
      * create the mapArr
      * @param $collection

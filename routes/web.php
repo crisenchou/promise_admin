@@ -16,11 +16,6 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function () {
-
-    Route::put('post/{id}', function ($id) {
-        //
-    })->middleware('role:editor');
-
     //core
     Route::group(['middleware' => 'role:root'], function () {
 
