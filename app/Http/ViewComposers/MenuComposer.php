@@ -7,25 +7,17 @@
  */
 namespace App\Http\ViewComposers;
 
-use App\Repositories\Criteria\MainMenu;
-use App\Repositories\Criteria\Submenu;
-use App\Repositories\MenuRepository;
 use Illuminate\View\View;
 use App\Menu;
 
 class MenuComposer
 {
 
-    protected $menus;
+    protected $menu;
 
-    public function __construct(MenuRepository $menu)
+    public function __construct(Menu $menu)
     {
-//        $menu->pushCriteria(new MainMenu());
-//        $menu->pushCriteria(new Submenu());
-
-        $menus = $menu->findAllBy('parent_id', 0);
-        //$menus = $menu->all();
-        $this->menus = $menus;
+        $this->menu = $menu;
     }
 
     /**
@@ -36,6 +28,7 @@ class MenuComposer
      */
     public function compose(View $view)
     {
-        $view->with('menusTree', $this->menus);
+        $menus = Menu::get();
+        $view->with('menusTree', $menus);
     }
 }

@@ -41,8 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //common
-    //  Route::get('/', 'HomeController@index')->name('index');
-    Route::get('home', 'HomeController@index')->name('home');
+     Route::get('/', 'Personal\HomeController@index')->name('index');
+    Route::get('home', 'Personal\HomeController@index')->name('home');
 
     //personal
     Route::get('profile', 'ProfileController@profile')->name('profile');

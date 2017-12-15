@@ -68,7 +68,7 @@ class HomeController extends AbstractPersonalController
         Auth::logout();
         session()->flush();
         session()->regenerate();
-        return $this->message('修改成功,请重新登陆', 'login');
+        return $this->message('success', 'login');
     }
 
 
