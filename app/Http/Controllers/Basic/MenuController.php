@@ -3,22 +3,17 @@
 namespace App\Http\Controllers\Basic;
 
 use App\Http\Requests\MenuRequest;
-use App\Repositories\MenuRepository;
-use App\Repositories\PermissionRepository;
+use App\Menu;
 
 class MenuController extends AbstractBasicController
 {
 
-
     protected $menu;
-    protected $permission;
     public $title = '菜单管理';
 
-
-    public function __construct(MenuRepository $menu, PermissionRepository $permission)
+    public function __construct(Menu $menu )
     {
         $this->menu = $menu;
-        $this->permission = $permission;
     }
 
 
@@ -30,9 +25,8 @@ class MenuController extends AbstractBasicController
 
     public function create()
     {
-        $permissions = $this->createMap($this->permission->all());
         $menus = $this->createMap($this->menu->all());
-        return $this->view('basic.menu.create', compact('permissions', 'menus'));
+        return $this->view('basic.menu.create', compact( 'menus'));
     }
 
 
@@ -55,10 +49,9 @@ class MenuController extends AbstractBasicController
 
     public function edit($id)
     {
-        $permissions = $this->createMap($this->permission->all());
         $menus = $this->createMap($this->menu->all());
         $model = $this->menu->find($id);
-        return $this->view('basic.menu.edit', compact('permissions', 'menus', 'model'));
+        return $this->view('basic.menu.edit', compact('menus', 'model'));
     }
 
 

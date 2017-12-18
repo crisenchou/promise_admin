@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\PermissionRequest;
+use App\Permission;
 use App\Repositories\PermissionRepository;
 
 class PermissionController extends AbstractCoreController
@@ -12,7 +13,7 @@ class PermissionController extends AbstractCoreController
     public $title = '权限管理';
 
 
-    public function __construct(PermissionRepository $permission)
+    public function __construct(Permission $permission)
     {
         $this->model = $permission;
     }

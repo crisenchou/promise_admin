@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Personal;
 use App\UserInfo;
 use Illuminate\Http\Request;
 use Auth;
+use App\Menu;
 
 class HomeController extends AbstractPersonalController
 {

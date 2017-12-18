@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Content;
 
+use App\Category;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Repositories\CategoryRepository;
 
 class CategoryController extends AbstractContentController
 {
@@ -12,7 +12,7 @@ class CategoryController extends AbstractContentController
     protected $category;
 
 
-    public function __construct(CategoryRepository $category)
+    public function __construct(Category $category)
     {
         $this->category = $category;
     }

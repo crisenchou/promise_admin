@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\RoleRequest;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Repositories\RoleRepository;
+use App\Role;
 
 class RoleController extends AbstractCoreController
 {
@@ -13,7 +11,7 @@ class RoleController extends AbstractCoreController
     protected $role;
     protected $title = '角色管理';
 
-    public function __construct(RoleRepository $role)
+    public function __construct(Role $role)
     {
         $this->role = $role;
     }

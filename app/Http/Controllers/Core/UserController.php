@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Core;
 
-use App\Http\Requests\UserEditRequest;
-use App\Http\Requests\UserRequest;
-use App\Repositories\RoleRepository;
-use App\Repositories\UserRepository;
+use App\Http\Requests\User\EditRequest;
+use App\Http\Requests\User\CreateRequest;
+use App\Role;
+use App\User;
 
 
 class UserController extends AbstractCoreController
@@ -13,9 +13,10 @@ class UserController extends AbstractCoreController
 
     protected $user;
     protected $role;
+    protected $route = 'user';
     public $title = '用户管理';
 
-    public function __construct(UserRepository $user, RoleRepository $role)
+    public function __construct(User $user, Role $role)
     {
         $this->user = $user;
         $this->role = $role;
@@ -25,6 +26,7 @@ class UserController extends AbstractCoreController
     {
         $roles = $this->role->all();
         $this->render['roles'] = $this->createMap($roles);
+        $this->render['route'] = $this->route;
         parent::init();
     }
 
@@ -68,7 +70,7 @@ class UserController extends AbstractCoreController
     }
 
 
-    public function store(UserRequest $request)
+    public function store(CreateRequest $request)
     {
         $fillData = $this->encryptPassword($request->except('_token'));
         $user = $this->user->create($fillData);
@@ -89,7 +91,7 @@ class UserController extends AbstractCoreController
     }
 
 
-    public function update(UserEditRequest $request, $id)
+    public function update(EditRequest $request, $id)
     {
         $user = $this->user->find($id);
         $fillData = $this->encryptPassword($request->except('_token'));

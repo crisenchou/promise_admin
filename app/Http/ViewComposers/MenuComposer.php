@@ -28,7 +28,12 @@ class MenuComposer
      */
     public function compose(View $view)
     {
-        $menus = Menu::get();
-        $view->with('menusTree', $menus);
+        $menus = Menu::get()->groupBy('parent_id')->toArray();
+        $menusTree = $menus[0];
+        foreach ($menusTree as &$menu) {
+            $menu['subMenu'] = $menus[$menu['id']];
+            unset($menu);
+        }
+        $view->with('menusTree', $menusTree);
     }
 }
