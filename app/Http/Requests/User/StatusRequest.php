@@ -24,7 +24,7 @@ class StatusRequest extends UserRequest
     public function rules()
     {
         return [
-            'status' => 'required|numric'
+            'status' => 'required|numeric'
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Core;
 
 use App\Http\Requests\User\EditRequest;
 use App\Http\Requests\User\CreateRequest;
+use App\Http\Requests\User\StatusRequest;
 use App\Role;
 use App\User;
 
@@ -27,9 +28,9 @@ class UserController extends AbstractCoreController
         $roles = $this->role->all();
         $this->render['roles'] = $this->createMap($roles);
         $this->render['route'] = $this->route;
+        $this->render['title'] = $this->title;
         parent::init();
     }
-
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -37,7 +38,7 @@ class UserController extends AbstractCoreController
     public function index()
     {
         $list = $this->user->all();
-        return $this->view('basic.user.index', compact('list'));
+        return $this->view('core.user.index', compact('list'));
     }
 
     /**
@@ -45,7 +46,7 @@ class UserController extends AbstractCoreController
      */
     public function create()
     {
-        return $this->view('basic.user.create');
+        return $this->view('core.user.create');
     }
 
 
@@ -56,7 +57,7 @@ class UserController extends AbstractCoreController
     public function show($id)
     {
         $model = $this->user->find($id);
-        return $this->view('basic.user.show', compact('model'));
+        return $this->view('core.user.show', compact('model'));
     }
 
     /**
@@ -66,7 +67,7 @@ class UserController extends AbstractCoreController
     public function edit($id)
     {
         $model = $this->user->find($id);
-        return $this->view('basic.user.edit', compact('model'));
+        return $this->view('core.user.edit', compact('model'));
     }
 
 
@@ -117,5 +118,15 @@ class UserController extends AbstractCoreController
         return $this->error();
     }
 
+
+    public function status(StatusRequest $request, $id)
+    {
+        $status = $request->get('status');
+        $user = $this->user->find($id);
+        if ($user->update(['status' => $status])) {
+            return $this->success();
+        }
+        return $this->error();
+    }
 
 }

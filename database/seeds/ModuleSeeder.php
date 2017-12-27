@@ -12,7 +12,7 @@ class ModuleSeeder extends Seeder
     public function run()
     {
         \DB::table('modules')->truncate();
-        $roles = config('roles');
+        $roles = config('module');
         \App\Module::insert($roles);
     }
 }

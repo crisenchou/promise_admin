@@ -4,6 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Role
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Permission[] $permissions
+ * @mixin \Eloquent
+ */
 class Role extends Model
 {
 
@@ -23,6 +29,6 @@ class Role extends Model
      */
     public function permissions()
     {
-        return $this->belongsToMany('App\Permission');
+        return $this->belongsToMany(Permission::class);
     }
 }

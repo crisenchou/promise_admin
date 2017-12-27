@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Permission
+ *
+ * @mixin \Eloquent
+ */
 class Permission extends Model
 {
     /**

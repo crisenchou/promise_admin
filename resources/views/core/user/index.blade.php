@@ -2,7 +2,7 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            用户管理
+            {{$title}}
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 <a href="{{route($route.'.create')}}">新建</a>
@@ -49,18 +49,23 @@
                                 <td><span class="label label-sm label-warning">{{$user->humanStatus}}</span></td>
                                 <td>
                                     <div class="hidden-sm hidden-xs btn-group">
-                                        <!--<button class="btn btn-xs btn-success">
-                                            <i class="ace-icon fa fa-check bigger-120"></i>
-                                        </button>-->
-
-                                        <a href="{{route($route.'.edit',['id'=>$user->id])}}" class="btn btn-xs btn-info">
+                                        <a href="{{route($route.'.edit',['id'=>$user->id])}}"
+                                           class="btn btn-xs btn-info">
                                             <i class="ace-icon fa fa-pencil bigger-120">编辑</i>
                                         </a>
 
-                                        <button class="btn btn-xs btn-danger" data-action="{{route($route.'.destroy',$user->id)}}" data-toggle="modal"
+                                        <button class="btn btn-xs btn-danger"
+                                                data-action="{{route($route.'.destroy',$user->id)}}" data-toggle="modal"
                                                 data-target="#deleteModal">
                                             <i class="ace-icon fa fa-trash-o bigger-120">删除</i>
                                         </button>
+                                    </div>
+                                    <div class="hidden-sm hidden-xs btn-group">
+                                        <form action="{{route('user.status',['id'=>$user->id])}}" method="post">
+                                            <button class="btn btn-xs btn-info" type="submit">
+                                                <i class="ace-icon fa fa-flag bigger-120">激活</i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -73,7 +78,7 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 
-@include('components.widget.delete-modal')
+    @include('components.widget.delete-modal')
 
 @endsection
 @push('scripts')

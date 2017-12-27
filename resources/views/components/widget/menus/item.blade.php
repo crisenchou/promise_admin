@@ -1,10 +1,10 @@
 @if(isset($menu['subMenu']) && count($menu['subMenu']))
     {{-- 带子菜单--}}
     <li class="">
-        <a href="{{$menu['url']}}" class="dropdown-toggle">
+        <a href=" {{url($menu['url'])}}" class="dropdown-toggle">
             <i class="menu-icon fa {{$menu['icon']}}"></i>
             <span class="menu-text">
-                {{$menu['name']}}
+                {{ $menu['name']}}
             </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
@@ -16,10 +16,10 @@
 @else
     {{--不带子菜单--}}
     <li class="">
-        <a href="{{$menu['url']}}">
+        <a href=" {{url($menu['url'])}}">
             <i class="menu-icon fa {{$menu['icon']}}"></i>
             <span class="menu-text">
-            {{$menu['name']}}
+           {{ $menu['name']}}
         </span>
         </a>
         <b class="arrow"></b>

@@ -4,6 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Post
+ *
+ * @property-read \App\User $user
+ * @mixin \Eloquent
+ */
 class Post extends Model
 {
     public $fillable = [

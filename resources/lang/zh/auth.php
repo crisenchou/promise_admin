@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => '账号或密码不匹配',
-    'throttle' => '您已经失败了太多次了,请在:seconds秒后重试.',
+    'failed'   => '用户名或密码错误。',
+    'throttle' => '您的尝试登录次数过多，请 :seconds 秒后再试。',
 
 ];

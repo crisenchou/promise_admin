@@ -18,8 +18,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     //core
     Route::group(['middleware' => 'role:root'], function () {
-
+        Route::put('user/{id}/status', 'Core\UserController@status')->name('user.status');
         Route::resource('user', 'Core\UserController');
+
         Route::resource('module', 'Core\ModuleController');
         Route::resource('role', 'Core\RoleController');
         Route::resource('permission', 'Core\PermissionController');
@@ -41,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //common
-     Route::get('/', 'Personal\HomeController@index')->name('index');
+    Route::get('/', 'Personal\HomeController@index')->name('index');
     Route::get('home', 'Personal\HomeController@index')->name('home');
 
     //personal
