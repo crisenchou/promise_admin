@@ -16,7 +16,7 @@
             {!! Form::model($model, ['route' => [$route.'.update', $model->id],'class'=>'form-horizontal']) !!}
             {{method_field('put')}}
             {{ Form::bsText('name', '名称',$model->name )}}
-            {{ Form::bsText('description', '描述',$model->description )}}
+            {{ Form::bsText('desc', '描述',$model->desc )}}
             {{ Form::bsButton() }}
             {!! Form::close() !!}
         </div>

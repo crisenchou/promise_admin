@@ -5,6 +5,7 @@
  * date: 2017/4/14 16:14
  * description:
  */
+
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
@@ -28,12 +29,18 @@ class MenuComposer
      */
     public function compose(View $view)
     {
-        $menus = Menu::get()->groupBy('parent_id')->toArray();
-        $menusTree = $menus[0];
-        foreach ($menusTree as &$menu) {
-            $menu['subMenu'] = $menus[$menu['id']];
-            unset($menu);
-        }
+
+        $collection = $this->menu->get();
+        $collection = $collection->keyBy(function ($item) {
+            return $item->id;
+        })->toArray();
+
+        $menusTree = getTree($collection, 'parent_id', 'subMenu');
+
+        $user = \Auth::user();
+        $view->with('menusTree', $menusTree);
+        $view->with('user', $user);
+
         $view->with('menusTree', $menusTree);
     }
 }

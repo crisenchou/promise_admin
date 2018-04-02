@@ -25,10 +25,8 @@ class UserController extends AbstractCoreController
 
     public function init()
     {
-        $roles = $this->role->all();
-        $this->render['roles'] = $this->createMap($roles);
-        $this->render['route'] = $this->route;
-        $this->render['title'] = $this->title;
+        $roles = $this->role->pluck('name', 'id');
+        $this->render['roles'] = $roles;
         parent::init();
     }
 
@@ -50,20 +48,13 @@ class UserController extends AbstractCoreController
     }
 
 
-    /**
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $model = $this->user->find($id);
         return $this->view('core.user.show', compact('model'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $model = $this->user->find($id);
@@ -82,7 +73,7 @@ class UserController extends AbstractCoreController
         return $this->error();
     }
 
-    //处理密码
+
     private function encryptPassword($fillData)
     {
         if (!empty($fillData['password'])) {
@@ -105,10 +96,6 @@ class UserController extends AbstractCoreController
     }
 
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy($id)
     {
         $user = $this->user->find($id);

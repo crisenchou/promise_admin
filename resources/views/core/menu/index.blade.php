@@ -18,11 +18,11 @@
                     <div class="dd" id="nestable">
                         <ol class="dd-list">
                             @foreach($list as $menu)
-                                <li class="dd-item" data-id="{{$menu->id}}">
+                                <li class="dd-item" data-id="{{$menu['id']}}">
                                     <div class="dd-handle">
-                                        {{$menu->name}}
+                                        {{$menu['name']}}
                                         <div class="pull-right action-buttons">
-                                            <a class="blue" href="{{route('menu.edit',['id'=>$menu->id])}}">
+                                            <a class="blue" href="{{route('menu.edit',['id'=>$menu['id']])}}">
                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                             </a>
                                             <a class="red" href="#">
@@ -30,15 +30,15 @@
                                             </a>
                                         </div>
                                     </div>
-                                    @if(count($menu->submenu))
+                                    @if(count($menu['subMenu']))
                                         <ol class="dd-list">
-                                            @foreach($menu->submenu as $submenu)
-                                                <li class="dd-item" data-id="{{$submenu->id}}">
+                                            @foreach($menu['subMenu'] as $submenu)
+                                                <li class="dd-item" data-id="{{$submenu['id']}}">
                                                     <div class="dd-handle">
-                                                        {{$submenu->name}}
+                                                        {{$submenu['name']}}
                                                         <div class="pull-right action-buttons">
                                                             <a class="blue"
-                                                               href="{{route($route.'.edit',['id'=>$submenu->id])}}">
+                                                               href="{{route($route.'.edit',['id'=>$submenu['id']])}}">
                                                                 <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                             </a>
                                                             <a class="red" href="#">
@@ -59,21 +59,3 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 @endsection
-@push('scripts')
-<!-- page specific plugin scripts -->
-<script src="{{asset('assets/js/jquery.nestable.min.js')}}"></script>
-<!-- inline scripts related to this page -->
-<script type="text/javascript">
-    jQuery(function ($) {
-
-        $('.dd').nestable();
-
-        $('.dd-handle a').on('mousedown', function (e) {
-            e.stopPropagation();
-        });
-
-        $('[data-rel="tooltip"]').tooltip();
-
-    });
-</script>
-@endpush

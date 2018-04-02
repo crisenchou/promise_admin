@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Menu extends Model
 {
-    
+
     public $fillable = [
-        'parent_id', 'permission_id', 'name', 'url', 'target', 'icon', 'status'
+        'pid', 'name', 'url', 'target', 'icon', 'status'
     ];
 
     /**
@@ -29,11 +29,11 @@ class Menu extends Model
 
     public function subMenu()
     {
-        return $this->hasMany(Menu::class, 'parent_id');
+        return $this->hasMany(Menu::class, 'pid');
     }
 
     public function scopeParent($query)
     {
-        return $query->where('parent_id', 0);
+        return $query->where('pid', 0);
     }
 }

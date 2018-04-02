@@ -16,8 +16,7 @@
             {!!  Form::open(['route' => $route.'.store','class'=> 'form-horizontal']) !!}
             {{ Form::bsText('name', '菜单名称',old('name') )}}
             {{ Form::bsText('url', '菜单链接',old('url')  )}}
-            {{ Form::bsSelect('permission_id', '绑定权限',old('permission_id') ,$menuPresenter->fillPermissions($permissions))}}
-            {{ Form::bsSelect('parent_id', '父结点',old('parent_id'),$menuPresenter->fillMenus($menus))}}
+            {{ Form::bsSelect('pid', '父结点',old('pid'),$menuPresenter->fillMenus($menus))}}
             {{ Form::bsRadio('target', '打开方式' ,old('target') ,['_self'=>'当前窗口','_blank'=>'新窗口'])}}
             {{ Form::bsSwitch('status','菜单状态',old('status') )}}
             {{ Form::bsIcon('icon', '菜单图标' ,old('icon') )}}

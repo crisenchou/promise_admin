@@ -19,18 +19,14 @@ class PermissionController extends AbstractCoreController
     }
 
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function index()
     {
         $list = $this->model->all();
-        return $this->view('basic.permission.index', compact('list'));
+        return $this->view('core.permission.index', compact('list'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function create()
     {
         return $this->view('basic.permission.create');
@@ -49,14 +45,14 @@ class PermissionController extends AbstractCoreController
     public function show($id)
     {
         $model = $this->model->find($id);
-        return $this->view('basic.permission.show', compact('model'));
+        return $this->view('core.permission.show', compact('model'));
     }
 
 
     public function edit($id)
     {
         $model = $this->model->find($id);
-        return $this->view('basic.permission.edit', compact('model'));
+        return $this->view('core.permission.edit', compact('model'));
     }
 
 

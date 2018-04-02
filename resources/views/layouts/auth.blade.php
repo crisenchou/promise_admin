@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
-    <title>@yield('title','login')</title>
+    <title>@yield('title',config('app.name'))</title>
     <meta name="description" content="User login page"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <!-- bootstrap & fontawesome -->
@@ -38,7 +38,7 @@
     <![endif]-->
 </head>
 
-<body class="login-layout light-login">
+<body class="login-layout {{config('style.login-layout')}}">
 <div class="main-container">
     <div class="main-content">
         <div class="row">

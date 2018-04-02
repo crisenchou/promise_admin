@@ -1,44 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Content;
+namespace App\Http\Controllers\Basic;
 
 use App\Http\Requests\PostRequest;
-use App\Repositories\PostRepository;
+use App\Post;
 
-class PostController extends AbstractContentController
+class PostController extends AbstractBasicController
 {
 
     protected $post;
     protected $title = '文章管理';
 
 
-    public function __construct(PostRepository $post)
+    public function __construct(Post $post)
     {
         $this->post = $post;
     }
 
-    public function fields()
-    {
-        return [
-            'title' => 'bsText',
-            'summary' => 'bsText',
-            'cover' => 'bsImage',
-            'content' => 'bsTextarea'
-        ];
-    }
 
-    public function upload()
-    {
-        return true;
-    }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $list = $this->post->all();
-        return $this->view('basic.common.index', compact('list'));
+        return $this->view('basic.post.index', compact('list'));
     }
 
     /**
@@ -63,26 +47,19 @@ class PostController extends AbstractContentController
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $model = $this->post->find($id);
-        return $this->view('basic.common.show', compact('model'));
+        return $this->view('basic.post.show', compact('model'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
+
     public function edit($id)
     {
         $model = $this->post->find($id);
-        return $this->view('basic.common.edit', compact('model'));
+        return $this->view('basic.post.edit', compact('model'));
     }
 
     public function update(PostRequest $request, $id)
@@ -99,10 +76,7 @@ class PostController extends AbstractContentController
         return $this->error();
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy($id)
     {
         $model = $this->post->find($id);

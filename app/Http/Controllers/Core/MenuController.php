@@ -11,7 +11,7 @@ class MenuController extends AbstractBasicController
     protected $menu;
     public $title = '菜单管理';
 
-    public function __construct(Menu $menu )
+    public function __construct(Menu $menu)
     {
         $this->menu = $menu;
     }
@@ -19,14 +19,21 @@ class MenuController extends AbstractBasicController
 
     public function index()
     {
-        $list = $this->menu->findAllBy('parent_id', 0);
-        return $this->view('basic.menu.index', compact('list'));
+
+        $collection = $this->menu->get();
+        $collection = $collection->keyBy(function ($item) {
+            return $item->id;
+        })->toArray();
+
+        $list = getTree($collection, 'parent_id', 'subMenu');
+        
+        return $this->view('core.menu.index', compact('list'));
     }
 
     public function create()
     {
         $menus = $this->createMap($this->menu->all());
-        return $this->view('basic.menu.create', compact( 'menus'));
+        return $this->view('core.menu.create', compact('menus'));
     }
 
 
@@ -43,7 +50,7 @@ class MenuController extends AbstractBasicController
     public function show($id)
     {
         $model = $this->menu->find($id);
-        return $this->view('basic.menu.show', compact('model'));
+        return $this->view('core.menu.show', compact('model'));
     }
 
 
@@ -51,7 +58,7 @@ class MenuController extends AbstractBasicController
     {
         $menus = $this->createMap($this->menu->all());
         $model = $this->menu->find($id);
-        return $this->view('basic.menu.edit', compact('menus', 'model'));
+        return $this->view('core.menu.edit', compact('menus', 'model'));
     }
 
 

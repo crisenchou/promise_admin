@@ -19,13 +19,13 @@ class RoleController extends AbstractCoreController
     public function index()
     {
         $list = $this->role->all();
-        return $this->view('basic.role.index', compact('list'));
+        return $this->view('core.role.index', compact('list'));
     }
 
 
     public function create()
     {
-        return $this->view('basic.role.create');
+        return $this->view('core.role.create');
     }
 
 
@@ -42,14 +42,14 @@ class RoleController extends AbstractCoreController
     public function show($id)
     {
         $model = $this->role->find($id);
-        return $this->view('basic.role.show', compact('model'));
+        return $this->view('core.role.show', compact('model'));
     }
 
 
     public function edit($id)
     {
         $model = $this->role->find($id);
-        return $this->view('basic.role.edit', compact('model'));
+        return $this->view('core.role.edit', compact('model'));
     }
 
     public function update(RoleRequest $request, $id)

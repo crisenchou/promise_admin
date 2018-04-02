@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
-    <title>@yield('title','app')</title>
+    <title>@yield('title',config('app.name'))</title>
     <meta name="description" content="overview &amp; stats"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
     <!-- bootstrap & fontawesome -->
@@ -32,7 +32,7 @@
     <script src="{{asset('assets/js/respond.min.js')}}"></script>
     <![endif]-->
 </head>
-<body class="no-skin">
+<body class="{{config('style.skin')}}">
 @section('navbar')
     @include('components.widget.navbar')
 @show
@@ -53,7 +53,7 @@
             @show
             <div class="page-content">
                 @include('components.message.message')
-                @include('components.widget.settings')
+                @if(config('style.settings')) @include('components.widget.settings') @endif
                 @yield('page-content')
             </div><!-- /.page-content -->
         </div>

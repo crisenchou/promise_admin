@@ -2,7 +2,7 @@
 @section('page-content')
     <div class="page-header">
         <h1>
-            {{$title}}
+            角色管理
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 <a href="{{route($route.'.create')}}">新建</a>
@@ -11,11 +11,9 @@
     </div><!-- /.page-header -->
 
 
-
     @include('components.datatable.simple',[
-        'headers' => ['邮箱','名字','加入时间','用户状态'],
-        'properties' => ['email','name','created_at','status'],
+        'headers' => ['名称','描述'],
+        'properties' => ['name','desc'],
         'list' => $list
     ])
-
 @endsection

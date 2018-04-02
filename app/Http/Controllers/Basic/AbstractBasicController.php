@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Basic;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
-use Route;
+
 
 abstract class AbstractBasicController extends Controller
 {
@@ -15,7 +15,6 @@ abstract class AbstractBasicController extends Controller
     protected $fields = [];
     protected $opration = [];
     protected $hidden = [];
-    protected $upload = false;
     protected $route;
 
 

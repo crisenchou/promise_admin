@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Content;
+namespace App\Http\Controllers\Basic;
 
 use App\Category;
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Http\Request;
 
-class CategoryController extends AbstractContentController
+class CategoryController extends AbstractBasicController
 {
     public $title = "分类管理";
     protected $category;
@@ -30,7 +29,7 @@ class CategoryController extends AbstractContentController
      */
     public function index()
     {
-        $list = $this->category->findAllBy('parent_id', 0);
+        $list = $this->category->where('parent_id', 0)->get();
         return $this->view('basic.category.index', compact('list'));
     }
 

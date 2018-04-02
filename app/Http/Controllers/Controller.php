@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Route;
+use Auth;
 
 class Controller extends BaseController
 {
@@ -67,30 +68,32 @@ class Controller extends BaseController
     /**
      * @param null $message
      * @param null $url
+     * @param string $type
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function message($message = null, $url = null)
+    protected function message($message = null, $url = null, $type = 'success')
     {
-        return $this->redirect($url)->with(['message' => trans($message)]);
+        return $this->redirect($url)->with([
+            'message' => trans('message.' . $message),
+            'type' => $type
+        ]);
+    }
+
+    protected function success($message = 'success', $url = null)
+    {
+        return $this->message($message, $url, 'success');
     }
 
 
-    /**
-     * @param string $message
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    protected function success($message = 'success')
+    protected function error($message = 'fail', $url = null)
     {
-        return $this->message($message);
+        return $this->message($message, $url, 'danger');
     }
 
-    /**
-     * @param string $message
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    protected function error($message = 'fail')
+
+    protected function auth()
     {
-        return $this->message($message);
+        return Auth::user();
     }
 
 }

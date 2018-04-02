@@ -13,7 +13,7 @@ class MenuSeeder extends Seeder
     public function run()
     {
         \DB::table('menus')->truncate();
-        $menus = config('menus');
+        $menus = config('seeds.menus');
         Menu::insert($menus);
     }
 }

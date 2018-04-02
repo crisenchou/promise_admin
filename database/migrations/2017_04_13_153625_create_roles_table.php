@@ -17,7 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string('name', 20);
             $table->integer('level')->comment('角色等级  等级越小,权限越大  root的等级为0  参考linux内核设计');
-            $table->string('description', 100)->nullable();
+            $table->string('desc', 100)->nullable();
             $table->timestamps();
         });
     }
