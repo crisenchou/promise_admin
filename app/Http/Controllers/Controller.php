@@ -74,7 +74,7 @@ class Controller extends BaseController
     protected function message($message = null, $url = null, $type = 'success')
     {
         return $this->redirect($url)->with([
-            'message' => trans('message.' . $message),
+            'message' => __('message.' . $message),
             'type' => $type
         ]);
     }
@@ -90,10 +90,5 @@ class Controller extends BaseController
         return $this->message($message, $url, 'danger');
     }
 
-
-    protected function auth()
-    {
-        return Auth::user();
-    }
 
 }

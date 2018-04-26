@@ -21,6 +21,10 @@ class CreatePostsTable extends Migration
             $table->string('cover', 100)->nullable()->comment('文章封面');
             $table->text('content')->nullable()->comment('文章内容');
             $table->timestamps();
+            if (!environment('production')) {
+                $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            }
+
         });
     }
 

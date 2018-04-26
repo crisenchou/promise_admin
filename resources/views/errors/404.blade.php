@@ -1,95 +1,29 @@
-@extends('layouts.app')
-@section('breadcrumbs')
-    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-        <ul class="breadcrumb">
-            <li>
-                <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="#">Home</a>
-            </li>
+@extends('layouts.error')
 
-            <li>
-                <a href="#">Other Pages</a>
-            </li>
-            <li class="active">Error 404</li>
-        </ul><!-- /.breadcrumb -->
-
-        <div class="nav-search" id="nav-search">
-            <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-            </form>
-        </div><!-- /.nav-search -->
-    </div>
-@endsection
 @section('page-content')
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-
-            <div class="error-container">
-                <div class="well">
-                    <h1 class="grey lighter smaller">
-											<span class="blue bigger-125">
-												<i class="ace-icon fa fa-sitemap"></i>
-												404
-											</span>
-                        Page Not Found
-                    </h1>
-
-                    <hr />
-                    <h3 class="lighter smaller">We looked everywhere but we couldn't find it!</h3>
-
-                    <div>
-                        <form class="form-search">
-												<span class="input-icon align-middle">
-													<i class="ace-icon fa fa-search"></i>
-
-													<input type="text" class="search-query" placeholder="Give it a search..." />
-												</span>
-                            <button class="btn btn-sm" type="button">Go!</button>
-                        </form>
-
-                        <div class="space"></div>
-                        <h4 class="smaller">Try one of the following:</h4>
-
-                        <ul class="list-unstyled spaced inline bigger-110 margin-15">
-                            <li>
-                                <i class="ace-icon fa fa-hand-o-right blue"></i>
-                                Re-check the url for typos
-                            </li>
-
-                            <li>
-                                <i class="ace-icon fa fa-hand-o-right blue"></i>
-                                Read the faq
-                            </li>
-
-                            <li>
-                                <i class="ace-icon fa fa-hand-o-right blue"></i>
-                                Tell us about it
-                            </li>
-                        </ul>
-                    </div>
-
-                    <hr />
-                    <div class="space"></div>
-
-                    <div class="center">
-                        <a href="javascript:history.back()" class="btn btn-grey">
-                            <i class="ace-icon fa fa-arrow-left"></i>
-                            Go Back
-                        </a>
-
-                        <a href="#" class="btn btn-primary">
-                            <i class="ace-icon fa fa-tachometer"></i>
-                            Dashboard
-                        </a>
-                    </div>
+    <!-- page content -->
+    <div class="col-md-12">
+        <div class="col-middle">
+            <div class="text-center text-center">
+                <h1 class="error-number">404</h1>
+                <h2>Sorry but we couldn't find this page</h2>
+                <p>This page you are looking for does not exist <a href="#">Report this?</a>
+                </p>
+                <div class="mid_center">
+                    <h3>Search</h3>
+                    <form>
+                        <div class="col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">Go!</button>
+                          </span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <!-- PAGE CONTENT ENDS -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
+        </div>
+    </div>
+    <!-- /page content -->
 @endsection

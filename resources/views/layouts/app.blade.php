@@ -1,81 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta charset="utf-8"/>
-    <title>@yield('title',config('app.name'))</title>
-    <meta name="description" content="overview &amp; stats"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}"/>
-    <!-- page specific plugin styles -->
-@stack('css')
-<!-- text fonts -->
-    <link rel="stylesheet" href="{{asset('assets/css/fonts.googleapis.com.css')}}"/>
-    <!-- ace styles -->
-    <link rel="stylesheet" href="{{asset('assets/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style"/>
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href=" {{asset('assets/css/ace-part2.min.css')}}" class="ace-main-stylesheet"/>
-    <![endif]-->
-    <link rel="stylesheet" href="{{asset('assets/css/ace-skins.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('assets/css/ace-rtl.min.css')}}"/>
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{asset('assets/css/ace-ie.min.css')}}"/>
-    <![endif]-->
-    <!-- inline styles related to this page -->
-    <!-- ace settings handler -->
-    <script src="{{asset('assets/js/ace-extra.min.js')}}"></script>
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-    <!--[if lte IE 8]>
-    <script src="{{asset('assets/js/html5shiv.min.js')}}"></script>
-    <script src="{{asset('assets/js/respond.min.js')}}"></script>
-    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{config('app.name')}} -- @yield('title','index')</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    @stack('css')
 </head>
-<body class="{{config('style.skin')}}">
-@section('navbar')
-    @include('components.widget.navbar')
-@show
-<div class="main-container ace-save-state" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.loadState('main-container')
-        } catch (e) {
-        }
-    </script>
-    @section('sidebar')
-        @include('components.widget.sidebar')
-    @show
-    <div class="main-content">
-        <div class="main-content-inner">
-            @section('breadcrumbs')
-                @include('components.widget.breadcrumbs')
-            @show
-            <div class="page-content">
-                @include('components.message.message')
-                @if(config('style.settings')) @include('components.widget.settings') @endif
-                @yield('page-content')
-            </div><!-- /.page-content -->
+
+<body class="nav-md  {{ config('style.layout') }}">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2>John Doe</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+                @includeIf('admin.components.widget.sidebar')
+                @includeIf('admin.components.widget.menu-footer')
+            </div>
         </div>
-    </div><!-- /.main-content -->
-    @include('components.widget.footer')
-    @include('components.widget.scroll-up')
-</div><!-- /.main-container -->
-<!-- basic scripts -->
-<!--[if !IE]> -->
-<script src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
-<!-- <![endif]-->
-<!--[if IE]>
-<script src="{{asset('assets/js/jquery-1.11.3.min.js')}}"></script>
-<![endif]-->
-<script type="text/javascript">
-    if ('ontouchstart' in document.documentElement) document.write("<script src='{{asset('assets/js/jquery.mobile.custom.min.js')}}'>" + "<" + "/script>");
-</script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<!-- page specific plugin scripts -->
-@stack('scripts')
-<!-- ace scripts -->
-<script src="{{asset('assets/js/ace-elements.min.js')}}"></script>
-<script src="{{asset('assets/js/ace.min.js')}}"></script>
+
+        @includeIf('admin.components.widget.navigation')
+        @yield('page-content')
+        @includeIf('admin.components.widget.footer')
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="../vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="../vendors/Flot/jquery.flot.js"></script>
+<script src="../vendors/Flot/jquery.flot.pie.js"></script>
+<script src="../vendors/Flot/jquery.flot.time.js"></script>
+<script src="../vendors/Flot/jquery.flot.stack.js"></script>
+<script src="../vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="../vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../vendors/moment/min/moment.min.js"></script>
+<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+@stack('script')
+
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
 </body>
 </html>

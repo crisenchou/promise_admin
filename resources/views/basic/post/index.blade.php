@@ -60,7 +60,7 @@
             <!-- PAGE CONTENT ENDS -->
         </div><!-- /.col -->
     </div><!-- /.row -->
-    @include('components.widget.delete-modal')
+    @include('admin.components.widget.delete-modal')
 @endsection
 @push('scripts')
 <!-- page specific plugin scripts -->

@@ -42,19 +42,10 @@ class AbstractCoreController extends Controller
     }
 
 
-    public function isUpload()
-    {
-        if (method_exists($this, 'upload')) {
-            return $this->upload();
-        }
-        return property_exists($this, 'upload') ? $this->upload : '';
-    }
-
-
     protected function init()
     {
         $this->render['title'] = $this->getTitle();
         $this->render['route'] = $this->getRoute();
     }
-    
+
 }

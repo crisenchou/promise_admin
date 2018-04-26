@@ -19,9 +19,7 @@ class Menu extends Model
         'pid', 'name', 'url', 'target', 'icon', 'status'
     ];
 
-    /**
-     * The roles that belong to the user.
-     */
+
     public function permission()
     {
         return $this->belongsTo(Permission::class);
@@ -32,7 +30,7 @@ class Menu extends Model
         return $this->hasMany(Menu::class, 'pid');
     }
 
-    public function scopeParent($query)
+    public function scopeRoot($query)
     {
         return $query->where('pid', 0);
     }

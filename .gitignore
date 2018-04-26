@@ -16,3 +16,4 @@ bootstrap/cache/
 
 #idea
 .idea/
+_ide_helper.php

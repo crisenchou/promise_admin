@@ -16,9 +16,9 @@ class CreateUserInfosTable extends Migration
         Schema::create('user_infos', function (Blueprint $table) {
             $table->integer('user_id')->unique();
             $table->date('birthday')->nullable();
-            $table->integer('age')->nullable();
-            $table->integer('gender')->nullable();
-            $table->string('avatar', 60)->nullable();
+            $table->integer('age')->default(0)->nullable();
+            $table->integer('gender')->default(0)->nullable();
+            $table->string('avatar', 60)->default('')->nullable();
             $table->timestamps();
         });
     }

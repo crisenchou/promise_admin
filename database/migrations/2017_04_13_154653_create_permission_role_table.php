@@ -18,6 +18,11 @@ class CreatePermissionRoleTable extends Migration
             $table->integer('role_id');
             $table->integer('permission_id');
             $table->timestamps();
+            if (!environment('production')) {
+                $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+                $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            }
+            
         });
     }
 

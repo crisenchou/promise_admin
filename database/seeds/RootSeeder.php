@@ -21,12 +21,14 @@ class RootSeeder extends Seeder
      */
     public function run()
     {
+
+        $role = $this->role->where('name', 'root')->firstOrFail();
         $rootName = env('ROOT_NAME', 'root');
         $rootEmail = env('ROOT_EMAIL', 'crisen@crisen.org');
         $rootPassword = env('ROOT_PASSWORD', 'secret');
         $user = $this->user->where('email', $rootEmail)->first();
         if ($user) {
-            $user->roles()->attach(1);
+            $user->roles()->attach($role);
             dump('root exist');
             return;
         }
@@ -37,7 +39,7 @@ class RootSeeder extends Seeder
             'password' => bcrypt($rootPassword),
             'status' => 1
         ]);
-        $user->roles()->attach(1);
+        $user->roles()->attach($role);
     }
 
 }
