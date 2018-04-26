@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Menu[] $subMenu
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Menu parent()
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Menu root()
  */
 class Menu extends Model
 {

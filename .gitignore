@@ -1,6 +1,7 @@
 vendor/
 node_modules/
 
+
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
@@ -17,3 +18,4 @@ bootstrap/cache/
 #idea
 .idea/
 _ide_helper.php
+/public/html

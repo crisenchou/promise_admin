@@ -7,13 +7,15 @@
  */
 
 
+
+
+Route::get('/', function(){
+    return "hello admin";
+})->name('index');
+
+
 //auth
 Auth::routes();
-
-
-//common
-Route::get('/', 'Personal\HomeController@index')->name('index');
-Route::get('home', 'Personal\HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -28,14 +30,14 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //basic
-    Route::group(['middleware' => 'role:root|admin'], function () {
+    Route::group(['middleware' => 'role:root|Admin'], function () {
 
         Route::resource('menu', 'Basic\MenuController');
         Route::get('settings', 'Basic\SettingsController@index')->name('settings');
     });
 
 
-    Route::group(['middleware' => 'role:root|admin|editor'], function () {
+    Route::group(['middleware' => 'role:root|Admin|editor'], function () {
         //content
         Route::resource('category', 'Content\CategoryController');
         Route::resource('post', 'Content\PostController');
@@ -48,5 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('profile', 'ProfileController@saveProfile')->name('profile.save');
     Route::post('profile/password', 'ProfileController@changePassword')->name('password.change');
 
+    //common
+    Route::get('home', 'Personal\HomeController@index')->name('home');
 
 });

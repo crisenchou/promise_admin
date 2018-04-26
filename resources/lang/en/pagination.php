@@ -16,4 +16,20 @@ return [
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
 
+    // auth
+    'login_form' => 'Login Form',
+    'register_form' => 'Create Account',
+    'log_in' => 'Log In',
+    'lost_password' => 'Lost Password',
+    'new_member' => 'A New Comer?',
+
+    //form
+    'username' => 'Username',
+    'password' => 'Password',
+
+
 ];
+
+
+
+
