@@ -32,7 +32,7 @@ if (!function_exists('setting')) {
 if (!function_exists('environment')) {
     function environment($environment)
     {
-        return app()->environment == $environment;
+        return app()->environment($environment);
     }
 }
 

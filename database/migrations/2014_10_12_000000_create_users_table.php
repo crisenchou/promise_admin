@@ -15,18 +15,26 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id');
+            $table->unsignedInteger('role_id');
             $table->string('name', 60);
             $table->string('email', 100)->unique();
             $table->string('password', 100);
             $table->smallInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
-
-            if (!environment('production')) {
-                $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('set null');
-            }
         });
+
+
+        Schema::create('user_infos', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->unique();
+            $table->date('birthday')->nullable();
+            $table->unsignedInteger('age')->default(0)->nullable();
+            $table->unsignedTinyInteger('gender')->default(0)->nullable();
+            $table->string('avatar', 100)->default('')->nullable();
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
+
     }
 
     /**
@@ -37,5 +45,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('user_infos');
     }
 }

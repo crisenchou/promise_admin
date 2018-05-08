@@ -15,16 +15,12 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->comment('文章分类');
+            $table->unsignedInteger('category_id')->comment('文章分类');
             $table->string('title', 40)->comment('文章标题');
             $table->string('summary', 200)->nullable()->comment('文章简介');
             $table->string('cover', 100)->nullable()->comment('文章封面');
             $table->text('content')->nullable()->comment('文章内容');
             $table->timestamps();
-            if (!environment('production')) {
-                $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            }
-
         });
     }
 

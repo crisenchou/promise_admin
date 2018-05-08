@@ -16,7 +16,7 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 20);
-            $table->integer('level')->default(999)->comment('角色等级  等级越小,权限越大  root的等级为0 ');
+            $table->unsignedInteger('level')->default(999)->comment('角色等级  等级越小,权限越大  root的等级为0 ');
             $table->string('desc', 100)->nullable();
             $table->timestamps();
         });

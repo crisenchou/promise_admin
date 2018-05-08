@@ -41,4 +41,15 @@
             @endforeach
         </ul>
     </div>
+
+    <div class="alert ui-pnotify-container alert-success ui-pnotify-shadow" role="alert" style="min-height: 16px;">
+        <div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close"
+             style="cursor: pointer; visibility: hidden;"><span class="glyphicon glyphicon-remove"></span></div>
+        <div class="ui-pnotify-sticker" aria-role="button" aria-pressed="false" tabindex="0" title="Unstick"
+             style="cursor: pointer; visibility: hidden;"><span class="glyphicon glyphicon-play"
+                                                                aria-pressed="true"></span></div>
+        <div class="ui-pnotify-icon"><span class="glyphicon glyphicon-ok-sign"></span></div>
+        <h4 class="ui-pnotify-title">Regular Success</h4>
+        <div class="ui-pnotify-text" aria-role="alert">That thing that you were trying to do worked!</div>
+    </div>
 @endif
