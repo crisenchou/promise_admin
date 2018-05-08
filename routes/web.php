@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/',function(){
+Route::get('/', function () {
+    return 'hello laravel';
+});
+
+
+Route::get('/home', function () {
     return 'hello laravel';
 });

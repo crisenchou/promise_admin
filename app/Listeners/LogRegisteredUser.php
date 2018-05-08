@@ -28,7 +28,7 @@ class LogRegisteredUser
      */
     public function handle(Registered $event)
     {
-        $user = $event->user;
-        Mail::to($user->email)->queue(new RegisterMail($user));
+        //$user = $event->user;
+        //Mail::to($user->email)->queue(new RegisterMail($user));
     }
 }

@@ -7,13 +7,6 @@
  */
 
 
-
-
-Route::get('/', function(){
-    return "hello admin";
-})->name('index');
-
-
 //auth
 Auth::routes();
 
@@ -51,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('profile/password', 'ProfileController@changePassword')->name('password.change');
 
     //common
-    Route::get('home', 'Personal\HomeController@index')->name('home');
+    Route::get('home', 'Personal\HomeController@index')->name('admin.home');
+    Route::get('/', 'Personal\HomeController@index')->name('admin.index');
 
 });

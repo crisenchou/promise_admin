@@ -12,11 +12,6 @@ class HomeController extends AdminController
 {
 
 
-    public function __construct()
-    {
-
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -25,7 +20,7 @@ class HomeController extends AdminController
     public function index()
     {
         $user = $this->user();
-        return view('Admin.page.index', compact('user'));
+        return view('admin.page.index', compact('user'));
     }
 
     protected function user()
