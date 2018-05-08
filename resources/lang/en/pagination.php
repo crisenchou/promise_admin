@@ -25,8 +25,10 @@ return [
 
     //form
     'username' => 'Username',
+    'email' => 'Email',
     'password' => 'Password',
-
+    'password_again' => 'Password Again',
+    'register' => 'Register'
 
 ];
 
